@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>KLIK COMMUNITY</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+	
+	 <link rel="icon" type="image/png" href="logo.png" sizes="32x32">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #5a00c8, #a144ff);
+            color: white;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo-box {
+            text-align: center;
+        }
+
+        .logo {
+            width: 200px;          /* dimensione fissa più piccola */
+            height: 200px;         /* dimensione fissa più piccola */
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;      /* evita che l'immagine esca dai bordi */
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;     /* adatta l'immagine senza deformarla */
+        }
+
+        .join-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #ffffff;
+            color: #5a00c8;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+        .join-btn:hover {
+            background: #ddd;
+        }
+
+        /* Mobile */
+        @media (max-width: 850px) {
+            .wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!-- WIDGET DISCORD A SINISTRA -->
+        <iframe 
+            src="https://discord.com/widget?id=1329496584987082814&theme=dark"
+            width="350"
+            height="500"
+            allowtransparency="true"
+            frameborder="0"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+        </iframe>
+
+        <!-- LOGO A DESTRA + BOTTONE -->
+        <div class="logo-box">
+            <div class="logo">
+                <img src="logo.png" alt="Logo KLIK COMMUNITY">
+            </div>
+
+            <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
+                Entra nel server
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
