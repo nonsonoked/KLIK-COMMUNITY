@@ -4,20 +4,31 @@
     <meta charset="UTF-8">
     <title>KLIK COMMUNITY</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-	
-	 <link rel="icon" type="image/png" href="logo.png" sizes="32x32">
+    <!-- Font principali -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="logo.png" sizes="32x32">
+    
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #5a00c8, #a144ff);
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 60px;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
         }
 
         .wrapper {
@@ -37,21 +48,21 @@
         }
 
         .logo {
-            width: 200px;          /* dimensione fissa più piccola */
-            height: 200px;         /* dimensione fissa più piccola */
+            width: 200px;
+            height: 200px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: center;
             align-items: center;
             border: 2px solid rgba(255, 255, 255, 0.2);
-            overflow: hidden;      /* evita che l'immagine esca dai bordi */
+            overflow: hidden;
         }
 
         .logo img {
             width: 100%;
             height: 100%;
-            object-fit: cover;     /* adatta l'immagine senza deformarla */
+            object-fit: cover;
         }
 
         .join-btn {
@@ -71,6 +82,14 @@
             background: #ddd;
         }
 
+        .community-text {
+            margin-top: 30px;
+            font-size: 18px;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
         /* Mobile */
         @media (max-width: 850px) {
             .wrapper {
@@ -81,6 +100,9 @@
 </head>
 
 <body>
+
+    <!-- TITOLO PRINCIPALE -->
+    <h1>KLIK COMMUNITY</h1>
 
     <div class="wrapper">
 
@@ -105,6 +127,11 @@
             </a>
         </div>
 
+    </div>
+
+    <!-- TESTO SOTTO I WIDGET -->
+    <div class="community-text">
+        Entra ora nella nostra community: Fai amicizia e gioca con tante altre persone ai tuoi giochi preferiti!
     </div>
 
 </body>
