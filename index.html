@@ -20,36 +20,38 @@
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #5a00c8, #a144ff);
             color: white;
-            overflow-x: hidden;
         }
 
         h1 {
             font-family: 'Luckiest Guy', cursive;
             font-size: 60px;
-            margin-bottom: 40px;
+            margin: 30px 20px;
             text-align: center;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
         }
 
         .wrapper {
             display: flex;
-            gap: 40px;
-            align-items: center;
+            gap: 50px;
+            align-items: flex-start;
             background: rgba(255, 255, 255, 0.08);
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .logo-box {
             text-align: center;
+            margin-top: 20px;
         }
 
         .logo {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.1);
             display: flex;
@@ -88,12 +90,47 @@
             text-align: center;
             max-width: 800px;
             line-height: 1.5;
+            padding: 0 20px;
+        }
+
+        iframe {
+            width: 420px;    /* widget più grande per PC */
+            height: 600px;
+            border-radius: 15px;
+            border: none;
         }
 
         /* Mobile */
         @media (max-width: 850px) {
+            h1 {
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
+
             .wrapper {
                 flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            iframe {
+                width: 90%;
+                height: 400px;
+            }
+
+            .logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .join-btn {
+                font-size: 16px;
+                padding: 10px 18px;
+            }
+
+            .community-text {
+                font-size: 16px;
+                margin-top: 20px;
             }
         }
     </style>
@@ -106,17 +143,14 @@
 
     <div class="wrapper">
 
-        <!-- WIDGET DISCORD A SINISTRA -->
+        <!-- WIDGET DISCORD -->
         <iframe 
             src="https://discord.com/widget?id=1329496584987082814&theme=dark"
-            width="350"
-            height="500"
             allowtransparency="true"
-            frameborder="0"
             sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
         </iframe>
 
-        <!-- LOGO A DESTRA + BOTTONE -->
+        <!-- LOGO + BOTTONE -->
         <div class="logo-box">
             <div class="logo">
                 <img src="logo.png" alt="Logo KLIK COMMUNITY">
