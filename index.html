@@ -44,7 +44,6 @@
         .nav-links {
             display: flex;
             gap: 35px;
-            margin-right: 160px;
         }
 
         .nav-links a {
@@ -54,11 +53,6 @@
             font-size: 17px;
             padding: 8px 14px;
             border-radius: 10px;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: scale(1.1);
         }
 
         /* HAMBURGER */
@@ -92,23 +86,19 @@
         .mobile-menu a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         h1 {
             font-family: 'Luckiest Guy', cursive;
             font-size: 60px;
             margin-top: 120px;
-            text-align: center;
-            margin-bottom: 35px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
         }
 
-        /* LAYOUT */
+        /* LAYOUT PRINCIPALE */
         .wrapper {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
             gap: 40px;
             margin-bottom: 40px;
             flex-wrap: wrap;
@@ -121,10 +111,6 @@
             padding: 20px;
             border-radius: 20px;
             border: 2px solid rgba(255,255,255,0.35);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             width: 200px;
         }
 
@@ -132,12 +118,8 @@
             width: 160px;
             height: 160px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.25);
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.35);
+            border: 2px solid rgba(255,255,255,0.35);
         }
 
         .logo img {
@@ -152,9 +134,9 @@
             background: #fff;
             color: #5a00c8;
             border-radius: 12px;
-            text-decoration: none;
-            font-size: 18px;
             font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
         }
 
         iframe {
@@ -165,35 +147,22 @@
             background: rgba(0,0,0,0.2);
         }
 
-        /* TESTO */
-        .community-text {
-            margin-top: 30px;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        /* MEDIA QUERY — MOBILE FIX */
+        /* 📱 MOBILE FIX */
         @media (max-width: 900px) {
 
             .nav-links { display: none; }
-
             .hamburger { display: flex; }
 
-            /* Ordine elementi */
             .wrapper {
-                flex-direction: column;
+                flex-direction: column !important;
                 align-items: center;
             }
 
-            /* LOGO + TASTO PRIMA */
-            .logo-box {
-                order: 1;
-                width: 200px;
-            }
+            /* ORDINE MOBILE */
+            .logo-box { order: 1; }
+            iframe { order: 2; }
 
-            /* WIDGET DOPO */
             iframe {
-                order: 2;
                 width: 90%;
                 height: 500px;
             }
@@ -206,7 +175,7 @@
     <!-- NAVBAR -->
     <div class="navbar">
         <div class="nav-logo">
-            <img onclick="location.href='index.html'" src="logo.png">
+            <img src="logo.png" onclick="location.href='index.html'">
         </div>
 
         <div class="nav-links">
@@ -227,16 +196,18 @@
 
     <h1>KLIK COMMUNITY</h1>
 
-    <!-- WRAPPER -->
+    <!-- LAYOUT PRINCIPALE -->
     <div class="wrapper">
 
-        <!-- LOGO PRIMA SU MOBILE -->
+        <!-- LOGO SEMPRE SOPRA SU MOBILE -->
         <div class="logo-box">
-            <div class="logo"><img src="logo.png"></div>
+            <div class="logo">
+                <img src="logo.png">
+            </div>
             <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
         </div>
 
-        <!-- WIDGET DOPO SU MOBILE -->
+        <!-- WIDGET SEMPRE SOTTO SU MOBILE -->
         <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark"
                 allowtransparency="true"
                 sandbox="allow-popups allow-same-origin allow-scripts">
@@ -244,14 +215,10 @@
 
     </div>
 
-    <div class="community-text">
-        Entra ora nella nostra community: fai amicizia e gioca con tante altre persone ai tuoi giochi preferiti!
-    </div>
-
     <script>
         function toggleMenu() {
             const menu = document.getElementById("mobileMenu");
-            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
         }
     </script>
 
