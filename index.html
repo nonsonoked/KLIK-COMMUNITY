@@ -9,13 +9,11 @@
 
     <style>
         * { transition: 0.3s ease; box-sizing: border-box; }
-
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #5a00c8, #a144ff);
             color: white;
-            scroll-behavior: smooth;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -63,13 +61,13 @@
             transform: scale(1.1);
         }
 
+        /* HAMBURGER */
         .hamburger {
             display: none;
             flex-direction: column;
             gap: 6px;
             cursor: pointer;
         }
-
         .hamburger span {
             width: 28px;
             height: 3px;
@@ -77,6 +75,7 @@
             border-radius: 2px;
         }
 
+        /* MENU MOBILE */
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -100,15 +99,14 @@
             font-family: 'Luckiest Guy', cursive;
             font-size: 60px;
             margin-top: 120px;
-            margin-bottom: 30px;
             text-align: center;
+            margin-bottom: 35px;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
         }
 
-        /* WRAPPER CENTRATO ORIZZONTALE */
+        /* LAYOUT */
         .wrapper {
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: flex-start;
             gap: 40px;
@@ -116,7 +114,7 @@
             flex-wrap: wrap;
         }
 
-        /* LOGO + TASTO */
+        /* LOGO BOX */
         .logo-box {
             text-align: center;
             background: rgba(255,255,255,0.15);
@@ -138,9 +136,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid rgba(255, 255, 255, 0.35);
             overflow: hidden;
-            transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.35);
         }
 
         .logo img {
@@ -149,28 +146,17 @@
             object-fit: cover;
         }
 
-        .logo:hover {
-            transform: scale(1.07) rotate(3deg);
-        }
-
         .join-btn {
-            display: inline-block;
             margin-top: 15px;
             padding: 12px 22px;
-            background: #ffffff;
+            background: #fff;
             color: #5a00c8;
-            font-weight: 600;
             border-radius: 12px;
             text-decoration: none;
             font-size: 18px;
+            font-weight: 600;
         }
 
-        .join-btn:hover {
-            background: #ddd;
-            transform: scale(1.05);
-        }
-
-        /* WIDGET DISCORD CON BORDO */
         iframe {
             width: 520px;
             height: 650px;
@@ -179,109 +165,55 @@
             background: rgba(0,0,0,0.2);
         }
 
-        /* TESTO SOTTO IL WIDGET */
+        /* TESTO */
         .community-text {
             margin-top: 30px;
-            font-size: 18px;
-            text-align: center;
             max-width: 800px;
-        }
-
-        /* SEZIONI SEPARATE */
-        .community-section {
-            width: 90%;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin: 60px 0;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            backdrop-filter: blur(8px);
-            transition: 0.3s;
         }
 
-        .community-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-        }
-
-        .community-section h2 {
-            font-family: 'Luckiest Guy', cursive;
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .community-section p {
-            font-size: 18px;
-            line-height: 1.5;
-            text-align: justify;
-        }
-
-        .staff-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #ffffff;
-            color: #5a00c8;
-            font-weight: 700;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .staff-btn:hover {
-            background: #ddd;
-            transform: scale(1.05);
-        }
-
-        #totop {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            padding: 12px 16px;
-            background: white;
-            color: #5a00c8;
-            font-weight: 800;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 20px;
-            display: none;
-            box-shadow: 0 0 15px rgba(0,0,0,0.4);
-        }
-
-        #totop:hover {
-            transform: scale(1.2) rotate(8deg);
-        }
-
-        .version {
-            text-align: center;
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
-            margin: 40px 0 20px 0;
-        }
-
+        /* MEDIA QUERY — MOBILE FIX */
         @media (max-width: 900px) {
+
+            .nav-links { display: none; }
+
+            .hamburger { display: flex; }
+
+            /* Ordine elementi */
             .wrapper {
                 flex-direction: column;
                 align-items: center;
             }
-            iframe { width: 90%; height: 500px; }
-            .logo-box { width: 180px; margin-top: 20px; }
+
+            /* LOGO + TASTO PRIMA */
+            .logo-box {
+                order: 1;
+                width: 200px;
+            }
+
+            /* WIDGET DOPO */
+            iframe {
+                order: 2;
+                width: 90%;
+                height: 500px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- NAVBAR -->
     <div class="navbar">
-        <div class="nav-logo" onclick="location.href='index.html'">
-            <img src="logo.png">
+        <div class="nav-logo">
+            <img onclick="location.href='index.html'" src="logo.png">
         </div>
+
         <div class="nav-links">
             <a href="#chi">Chi siamo</a>
             <a href="#staff">Candidature staff</a>
         </div>
+
         <div class="hamburger" onclick="toggleMenu()">
             <span></span><span></span><span></span>
         </div>
@@ -295,63 +227,32 @@
 
     <h1>KLIK COMMUNITY</h1>
 
-    <!-- WRAPPER PRINCIPALE: WIDGET + LOGO/TASTO -->
+    <!-- WRAPPER -->
     <div class="wrapper">
-        <iframe 
-            src="https://discord.com/widget?id=1329496584987082814&theme=dark"
-            allowtransparency="true"
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-        </iframe>
 
+        <!-- LOGO PRIMA SU MOBILE -->
         <div class="logo-box">
-            <div class="logo">
-                <img src="logo.png" alt="Logo KLIK COMMUNITY">
-            </div>
+            <div class="logo"><img src="logo.png"></div>
             <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
         </div>
+
+        <!-- WIDGET DOPO SU MOBILE -->
+        <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark"
+                allowtransparency="true"
+                sandbox="allow-popups allow-same-origin allow-scripts">
+        </iframe>
+
     </div>
 
     <div class="community-text">
         Entra ora nella nostra community: fai amicizia e gioca con tante altre persone ai tuoi giochi preferiti!
     </div>
 
-    <!-- SEZIONE CHI SIAMO -->
-    <div id="chi" class="community-section">
-        <h2>Chi siamo</h2>
-        <p>
-            KLIK COMMUNITY nasce per l'esigenza di avere un server in cui parlare con tutti i nostri amici.
-            Successivamente con la progressiva crescita dei membri abbiamo deciso di rendere il server qualcosa di più.
-
-            Entrando nel server potrai scegliere i tuoi giochi preferiti e sbloccare delle categorie dedicate in base al gioco.
-            Le categorie visualizzabili a tutti contengono canali con meme, clip e spam di social per divertirsi e crescere sui social.
-
-            Noi siamo Ked e Nik, i due principali Founder, assicureremo sempre una giusta moderazione grazie ai nostri staff e la corretta gestione del server.
-            Grazie per aver scelto di entrare su KLIK COMMUNITY!
-        </p>
-        <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
-    </div>
-
-    <!-- SEZIONE CANDIDATURE -->
-    <div id="staff" class="community-section">
-        <h2>Candidature Staff</h2>
-        <p>Per candidarti come staff si potrà presto usare il canale "#bando-staff" all'interno del server!</p>
-        <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">ENTRA ORA NEL SERVER</a>
-    </div>
-
-    <a id="totop" href="#">▲</a>
-
-    <div class="version">v1.2</div>
-
     <script>
         function toggleMenu() {
             const menu = document.getElementById("mobileMenu");
             menu.style.display = menu.style.display === "flex" ? "none" : "flex";
         }
-
-        window.onscroll = function() {
-            const btn = document.getElementById("totop");
-            btn.style.display = document.documentElement.scrollTop > 200 ? "block" : "none";
-        };
     </script>
 
 </body>
