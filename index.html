@@ -3,282 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>KLIK COMMUNITY</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png" sizes="32x32">
-
     <style>
-        * {
-            transition: 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #5a00c8, #a144ff);
-            color: white;
-            scroll-behavior: smooth;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        * { transition: 0.3s ease; box-sizing: border-box; }
+        body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #5a00c8, #a144ff); color: white; scroll-behavior: smooth; display: flex; flex-direction: column; align-items: center; }
 
         /* NAVBAR */
-        .navbar {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0,0,0,0.35);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-        }
+        .navbar { width: 100%; position: fixed; top: 0; left: 0; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.35); backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; }
+        .nav-logo img { height: 55px; border-radius: 8px; cursor: pointer; }
+        .nav-links { display: flex; gap: 35px; margin-right: 160px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 17px; padding: 8px 14px; border-radius: 10px; }
+        .nav-links a:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
 
-        .nav-logo img {
-            height: 55px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+        h1 { font-family: 'Luckiest Guy', cursive; font-size: 60px; margin-top: 120px; margin-bottom: 30px; text-align: center; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
 
-        .nav-links {
-            display: flex;
-            gap: 35px;
-            margin-right: 160px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 17px;
-            padding: 8px 14px;
-            border-radius: 10px;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: scale(1.1);
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 28px;
-            height: 3px;
-            background: white;
-            border-radius: 2px;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            background: rgba(0,0,0,0.50);
-            backdrop-filter: blur(8px);
-            position: fixed;
-            top: 75px;
-            right: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            gap: 15px;
-        }
-
-        .mobile-menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        h1 {
-            font-family: 'Luckiest Guy', cursive;
-            font-size: 60px;
-            margin-top: 120px;
-            margin-bottom: 30px;
-            text-align: center;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-        }
-
-        /* WRAPPER CENTRATO */
-        .wrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
+        /* WRAPPER PRINCIPALE */
+        .wrapper { display: flex; flex-direction: column; align-items: center; gap: 30px; margin-bottom: 40px; }
 
         /* LOGO + TASTO */
-        .logo-box {
-            text-align: center;
-            background: rgba(255,255,255,0.15);
-            padding: 20px;
-            border-radius: 20px;
-            border: 2px solid rgba(255,255,255,0.35);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 200px;
-        }
-
-        .logo {
-            width: 160px;
-            height: 160px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.25);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid rgba(255, 255, 255, 0.35);
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .logo:hover {
-            transform: scale(1.07) rotate(3deg);
-        }
-
-        .join-btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 22px;
-            background: #ffffff;
-            color: #5a00c8;
-            font-weight: 600;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .join-btn:hover {
-            background: #ddd;
-            transform: scale(1.05);
-        }
+        .logo-btn-wrapper { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 25px; margin-bottom: 30px; flex-wrap: wrap; }
+        .logo { width: 160px; height: 160px; border-radius: 20px; background: rgba(255,255,255,0.25); display: flex; justify-content: center; align-items: center; border: 2px solid rgba(255,255,255,0.35); overflow: hidden; transition: 0.3s; }
+        .logo img { width: 100%; height: 100%; object-fit: cover; }
+        .logo:hover { transform: scale(1.07) rotate(3deg); }
+        .join-btn { display: inline-block; padding: 16px 28px; background: #ffffff; color: #5a00c8; font-weight: 600; border-radius: 12px; text-decoration: none; font-size: 20px; }
+        .join-btn:hover { background: #ddd; transform: scale(1.05); }
 
         /* WIDGET DISCORD */
-        iframe {
-            width: 520px;
-            height: 650px;
-            border-radius: 15px;
-            border: 2px solid rgba(255,255,255,0.35);
-            background: rgba(0,0,0,0.2);
-        }
+        iframe { width: 520px; height: 650px; border-radius: 15px; border: 2px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.2); }
 
-        .community-text {
-            margin-top: 30px;
-            font-size: 18px;
-            text-align: center;
-            max-width: 800px;
-        }
+        /* TESTO SOTTO IL WIDGET */
+        .community-text { margin-top: 30px; font-size: 18px; text-align: center; max-width: 800px; }
 
-        .community-section {
-            width: 90%;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
-            padding: 40px 30px;
-            margin: 60px 0;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-            backdrop-filter: blur(8px);
-            transition: 0.3s;
-        }
+        #totop { position: fixed; bottom: 25px; right: 25px; padding: 12px 16px; background: white; color: #5a00c8; font-weight: 800; border-radius: 50%; text-decoration: none; font-size: 20px; display: none; box-shadow: 0 0 15px rgba(0,0,0,0.4); }
+        #totop:hover { transform: scale(1.2) rotate(8deg); }
 
-        .community-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-        }
-
-        .community-section h2 {
-            font-family: 'Luckiest Guy', cursive;
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .community-section p {
-            font-size: 18px;
-            line-height: 1.5;
-            text-align: justify;
-        }
-
-        .staff-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #ffffff;
-            color: #5a00c8;
-            font-weight: 700;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .staff-btn:hover {
-            background: #ddd;
-            transform: scale(1.05);
-        }
-
-        #totop {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            padding: 12px 16px;
-            background: white;
-            color: #5a00c8;
-            font-weight: 800;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 20px;
-            display: none;
-            box-shadow: 0 0 15px rgba(0,0,0,0.4);
-        }
-
-        #totop:hover {
-            transform: scale(1.2) rotate(8deg);
-        }
-
-        .version {
-            text-align: center;
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
-            margin: 40px 0 20px 0;
-        }
+        .version { text-align: center; font-size: 14px; color: rgba(255,255,255,0.5); margin: 40px 0 20px 0; }
 
         @media (max-width: 900px) {
-            .wrapper {
-                flex-direction: column;
-                align-items: center;
-            }
-            iframe {
-                width: 90%;
-                height: 500px;
-            }
-            .logo-box {
-                width: 180px;
-                margin-top: 20px;
-            }
+            iframe { width: 90%; height: 500px; }
+            .logo-btn-wrapper { flex-direction: column; gap: 20px; }
+            .logo { width: 140px; height: 140px; }
+            .join-btn { font-size: 18px; padding: 14px 24px; }
         }
     </style>
 </head>
-
 <body>
 
     <!-- NAVBAR -->
@@ -286,82 +55,39 @@
         <div class="nav-logo" onclick="location.href='index.html'">
             <img src="logo.png">
         </div>
-
         <div class="nav-links">
-            <a href="#chi">Chi siamo</a>
-            <a href="#staff">Candidature staff</a>
+            <a href="chi-siamo.html">Chi siamo</a>
+            <a href="candidature.html">Candidature staff</a>
         </div>
-
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
-
-    <!-- MENU MOBILE -->
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="#chi" onclick="toggleMenu()">Chi siamo</a>
-        <a href="#staff" onclick="toggleMenu()">Candidature staff</a>
     </div>
 
     <h1>KLIK COMMUNITY</h1>
 
-    <!-- WRAPPER PRINCIPALE -->
     <div class="wrapper">
-
-        <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark"
-            allowtransparency="true"
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-        </iframe>
-
-        <div class="logo-box">
+        <!-- LOGO + TASTO -->
+        <div class="logo-btn-wrapper">
             <div class="logo">
                 <img src="logo.png" alt="Logo KLIK COMMUNITY">
             </div>
             <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
         </div>
 
+        <!-- WIDGET DISCORD -->
+        <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
     </div>
 
     <div class="community-text">
         Entra ora nella nostra community: fai amicizia e gioca con tante altre persone ai tuoi giochi preferiti!
     </div>
 
-    <!-- SEZIONE CHI SIAMO -->
-    <div id="chi" class="community-section">
-        <h2>Chi siamo</h2>
-        <p>
-            KLIK COMMUNITY nasce per l'esigenza di avere un server in cui parlare con tutti i nostri amici.
-            Successivamente con la progressiva crescita dei membri abbiamo deciso di rendere il server qualcosa di più.
-            Entrando nel server potrai scegliere i tuoi giochi preferiti e sbloccare delle categorie dedicate in base al gioco.
-            Le categorie visualizzabili a tutti contengono canali con meme, clip e spam di social per divertirsi e crescere sui social.
-            Noi siamo Ked e Nik, i due principali Founder, assicureremo sempre una giusta moderazione grazie ai nostri staff e la corretta gestione del server.
-            Grazie per aver scelto di entrare su KLIK COMMUNITY!
-        </p>
-        <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
-    </div>
-
-    <!-- SEZIONE CANDIDATURE -->
-    <div id="staff" class="community-section">
-        <h2>Candidature Staff</h2>
-        <p>Per candidarti come staff si potrà presto usare il canale "#bando-staff" all'interno del server!</p>
-        <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">ENTRA ORA NEL SERVER</a>
-    </div>
-
     <a id="totop" href="#">▲</a>
-
     <div class="version">v1.2</div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById("mobileMenu");
-            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-        }
-
-        window.onscroll = function () {
+        window.onscroll = function() {
             const btn = document.getElementById("totop");
             btn.style.display = document.documentElement.scrollTop > 200 ? "block" : "none";
         };
     </script>
-
 </body>
 </html>
