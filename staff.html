@@ -18,16 +18,17 @@ body {
     align-items: center;
 }
 
-/* NAVBAR */
+/* NAVBAR ALLINEATA A SINISTRA */
 .navbar { 
     width: 100%; 
     position: fixed; 
     top: 0; 
     left: 0; 
-    padding: 15px 40px; 
+    padding: 15px 20px; /* padding ridotto per avvicinare i link al bordo */
     display: flex; 
-    justify-content: space-between; 
+    justify-content: flex-start; /* tutto a sinistra */
     align-items: center; 
+    gap: 40px; /* spazio tra logo e link */
     background: rgba(0,0,0,0.35); 
     backdrop-filter: blur(8px); 
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
@@ -43,7 +44,7 @@ body {
 .nav-links { 
     display: flex; 
     gap: 35px; 
-    margin-right: 160px; 
+    margin-right: 0; /* tolto margin-right */
 }
 
 .nav-links a { 
@@ -194,7 +195,7 @@ body {
                 <img src="founder3.png" alt="Nexy">
                 <h3>Nexy</h3>
                 <span>Founder</span>
-                <p>Fondatore della community</p>
+                <p>Gestione server</p>
             </div>
         </div>
     </div>
