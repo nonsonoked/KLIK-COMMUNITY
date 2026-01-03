@@ -18,17 +18,16 @@ body {
     align-items: center;
 }
 
-/* NAVBAR ALLINEATA A SINISTRA */
+/* NAVBAR: logo a sinistra, link a destra */
 .navbar { 
     width: 100%; 
     position: fixed; 
     top: 0; 
     left: 0; 
-    padding: 15px 20px; /* padding ridotto per avvicinare i link al bordo */
+    padding: 15px 40px; 
     display: flex; 
-    justify-content: flex-start; /* tutto a sinistra */
+    justify-content: space-between; 
     align-items: center; 
-    gap: 40px; /* spazio tra logo e link */
     background: rgba(0,0,0,0.35); 
     backdrop-filter: blur(8px); 
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
@@ -44,7 +43,6 @@ body {
 .nav-links { 
     display: flex; 
     gap: 35px; 
-    margin-right: 0; /* tolto margin-right */
 }
 
 .nav-links a { 
@@ -95,7 +93,7 @@ body {
 
 .staff-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* auto-fit come prima */
     gap: 30px; 
     justify-items: center; 
 }
@@ -152,6 +150,12 @@ body {
     font-size: 14px; 
     color: rgba(255,255,255,0.5); 
     margin: 40px 0 20px 0; 
+}
+
+/* MEDIA QUERY per mobile */
+@media (max-width: 700px) {
+    .staff-grid { grid-template-columns: 1fr; }
+    .navbar { padding: 15px 20px; }
 }
 </style>
 </head>
