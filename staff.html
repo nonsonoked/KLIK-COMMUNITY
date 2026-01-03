@@ -26,7 +26,6 @@ body {
     align-items: center;
 }
 
-/* NAVBAR */
 .navbar {
     width: 100%;
     position: fixed;
@@ -67,7 +66,6 @@ body {
     transform: scale(1.1);
 }
 
-/* PAGINA */
 .staff-page {
     padding: 140px 20px 60px;
     text-align: center;
@@ -86,7 +84,6 @@ body {
     margin-bottom: 60px;
 }
 
-/* SEZIONI */
 .staff-section {
     max-width: 1200px;
     margin: 0 auto 80px;
@@ -97,28 +94,22 @@ body {
     margin-bottom: 40px;
 }
 
-/* GRIGLIE */
 .staff-grid {
-    display: grid;
-    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 30px;
 }
 
-.founder-grid {
-    grid-template-columns: repeat(3, 220px);
-}
-
-.admin-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-
-/* CARD */
 .staff-card {
     background: rgba(255,255,255,0.18);
     backdrop-filter: blur(6px);
     border-radius: 22px;
     padding: 30px 20px;
     box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    cursor: pointer;
+    width: 220px;
+    transition: transform 0.3s;
 }
 
 .staff-card:hover {
@@ -148,7 +139,21 @@ body {
     margin-top: 10px;
 }
 
-/* FOUNDER */
+.extra-info {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.extra-info.open {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 12px;
+}
+
 .founder {
     box-shadow: 0 0 25px rgba(255,215,0,0.35);
 }
@@ -161,7 +166,6 @@ body {
     color: gold;
 }
 
-/* ADMIN */
 .admin {
     box-shadow: 0 0 25px rgba(255,75,75,0.35);
 }
@@ -174,7 +178,6 @@ body {
     color: #ff4b4b;
 }
 
-/* FOOTER */
 .footer {
     text-align: center;
     font-size: 14px;
@@ -182,45 +185,21 @@ body {
     margin: 40px 0 20px;
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
-
-    .navbar {
-        padding: 12px 20px;
-    }
-
-    .nav-links {
-        gap: 18px;
-        font-size: 15px;
-    }
-
-    .staff-page h1 {
-        font-size: 38px;
-    }
-
-    .staff-grid.founder-grid,
-    .staff-grid.admin-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .staff-card {
-        padding: 22px 15px;
-    }
-
-    .staff-card img {
-        width: 80px;
-        height: 80px;
-    }
+    .navbar { padding: 12px 20px; }
+    .nav-links { gap: 18px; }
+    .staff-page h1 { font-size: 38px; }
+    .staff-card { width: 160px; }
+    .staff-card img { width: 80px; height: 80px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
-        <img src="logo.png" alt="Logo KLIK">
+        <img src="logo.png">
     </div>
     <div class="nav-links">
         <a href="index.html">Home</a>
@@ -231,73 +210,126 @@ body {
 </div>
 
 <section class="staff-page">
-    <h1>Staff KLIK</h1>
-    <p>Il team che mantiene la community attiva, sicura e divertente</p>
+<h1>Staff KLIK</h1>
+<p>Il team che mantiene la community attiva, sicura e divertente</p>
 
-    <!-- FOUNDER -->
-    <div class="staff-section">
-        <h2>👑 Founder</h2>
-        <div class="staff-grid founder-grid">
-            <div class="staff-card founder">
-                <img src="founder1.png">
-                <h3>Ked</h3>
-                <span>Founder</span>
-                <p>Fondatore della community</p>
-            </div>
-            <div class="staff-card founder">
-                <img src="founder2.png">
-                <h3>Ni89</h3>
-                <span>Founder</span>
-                <p>Fondatore della community</p>
-            </div>
-            <div class="staff-card founder">
-                <img src="founder3.png">
-                <h3>Nexy</h3>
-                <span>Founder</span>
-                <p>Gestione server</p>
-            </div>
-        </div>
-    </div>
+<div class="staff-section">
+<h2>👑 Founder</h2>
+<div class="staff-grid founder-grid">
 
-    <!-- ADMIN -->
-    <div class="staff-section">
-        <h2>🛡️ Admin</h2>
-        <div class="staff-grid admin-grid">
-            <div class="staff-card admin">
-                <img src="admin1.png">
-                <h3>Dragon</h3>
-                <span>Admin</span>
-                <p>Moderazione chat</p>
-            </div>
-            <div class="staff-card admin">
-                <img src="admin2.png">
-                <h3>Amon</h3>
-                <span>Admin</span>
-                <p>Supporto utenti</p>
-            </div>
-            <div class="staff-card admin">
-                <img src="admin3.png">
-                <h3>Skibidi count</h3>
-                <span>Admin</span>
-                <p>Gestione canali</p>
-            </div>
-            <div class="staff-card admin">
-                <img src="admin4.png">
-                <h3>Gesusenzaccento</h3>
-                <span>Admin</span>
-                <p>Eventi e attività</p>
-            </div>
-            <div class="staff-card admin">
-                <img src="admin5.png">
-                <h3>nero2.2</h3>
-                <span>Admin</span>
-                <p>Moderazione vocale</p>
-            </div>
-        </div>
+<div class="staff-card founder" onclick="toggleInfo(this)">
+    <img src="founder1.png">
+    <h3>Ked</h3>
+    <span>Founder</span>
+    <p>Fondatore della community</p>
+    <div class="extra-info">
+        <p><b>Ruolo:</b> Founder & Dev</p>
+        <p><b>Specialità:</b> Server, sito</p>
+        <p><b>Attivo da:</b> 2025</p>
     </div>
+</div>
+
+<div class="staff-card founder" onclick="toggleInfo(this)">
+    <img src="founder2.png">
+    <h3>Ni89</h3>
+    <span>Founder</span>
+    <p>Fondatore della community</p>
+    <div class="extra-info">
+        <p><b>Ruolo:</b> Founder & BotDev</p>
+        <p><b>Specialità:</b> Server, bot</p>
+        <p><b>Attivo da:</b> 2025</p>
+    </div>
+</div>
+
+<div class="staff-card founder" onclick="toggleInfo(this)">
+    <img src="founder3.png">
+    <h3>Nexy</h3>
+    <span>Founder</span>
+    <p>Gestione server</p>
+    <div class="extra-info">
+        <p><b>Ruolo:</b> Gestione server</p>
+        <p><b>Specialità:</b> Dare fastidio</p>
+        <p><b>Attivo da:</b> 2025</p>
+    </div>
+</div>
+
+</div>
+</div>
+
+<div class="staff-section">
+<h2>🛡️ Admin</h2>
+<div class="staff-grid admin-grid">
+
+<div class="staff-card admin" onclick="toggleInfo(this)">
+    <img src="admin1.png">
+    <h3>Dragon</h3>
+    <span>Admin</span>
+    <p></p>
+    <div class="extra-info">
+        <p><b>Area:</b> Generale</p>
+    </div>
+</div>
+
+<div class="staff-card admin" onclick="toggleInfo(this)">
+    <img src="admin2.png">
+    <h3>Amon</h3>
+    <span>Admin</span>
+    <p></p>
+    <div class="extra-info">
+        <p><b>Area:</b> Generale</p>
+    </div>
+</div>
+
+<div class="staff-card admin" onclick="toggleInfo(this)">
+    <img src="admin3.png">
+    <h3>Skibidi count</h3>
+    <span>Admin</span>
+    <p></p>
+    <div class="extra-info">
+        <p><b>Area:</b> Generale</p>
+    </div>
+</div>
+
+<div class="staff-card admin" onclick="toggleInfo(this)">
+    <img src="admin4.png">
+    <h3>Gesusenzaccento</h3>
+    <span>Admin</span>
+    <p></p>
+    <div class="extra-info">
+        <p><b>Area:</b> Generale</p>
+    </div>
+</div>
+
+<div class="staff-card admin" onclick="toggleInfo(this)">
+    <img src="admin5.png">
+    <h3>nero2.2</h3>
+    <span>Admin</span>
+    <p>Admin</p>
+    <div class="extra-info">
+        <p><b>Area:</b> Generale</p>
+    </div>
+</div>
+
+</div>
+</div>
+
 </section>
 
-<div class="footer">v1.4 by Ked</div>
+<div class="footer">v1.5 by Ked</div>
+
+<script>
+function toggleInfo(clickedCard) {
+    document.querySelectorAll('.extra-info').forEach(info => {
+        const card = info.closest('.staff-card');
+        if (card !== clickedCard) {
+            info.classList.remove('open');
+        }
+    });
+    const info = clickedCard.querySelector('.extra-info');
+    info.classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
+
