@@ -9,173 +9,155 @@
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; transition:0.25s ease; font-family:'Poppins',sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;transition:.25s}
 
-body {
-    background: linear-gradient(135deg, #5a00c8, #a144ff);
-    color:white;
+body{
+    background:linear-gradient(135deg,#5a00c8,#a144ff);
+    color:#fff;
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
 /* NAVBAR */
-.navbar {
+.navbar{
     width:100%;
     position:fixed;
     top:0;
-    left:0;
     padding:15px 40px;
     display:flex;
     align-items:center;
-    background:rgba(0,0,0,0.35);
+    background:rgba(0,0,0,.35);
     backdrop-filter:blur(8px);
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
     z-index:9999;
 }
 
-.nav-logo {
+.nav-logo{
     display:flex;
     align-items:center;
     gap:15px;
     cursor:pointer;
 }
 
-.nav-logo img {
-    height:55px;
-    border-radius:8px;
-}
+.nav-logo img{height:55px;border-radius:8px}
 
-/* TITOLO NAVBAR (SOLO PC) */
-.nav-title {
-    font-family:'Luckiest Guy', cursive;
+.nav-title{
+    font-family:'Luckiest Guy',cursive;
     font-size:26px;
-    letter-spacing:1px;
 }
 
-.nav-links {
-    display:flex;
-    gap:35px;
+.nav-links{
     margin-left:auto;
+    display:flex;
+    gap:30px;
 }
 
-.nav-links a {
-    color:white;
+.nav-links a{
+    color:#fff;
     text-decoration:none;
     font-weight:600;
-    font-size:17px;
     padding:8px 14px;
     border-radius:10px;
 }
 
-.nav-links a:hover {
-    background:rgba(255,255,255,0.2);
-    transform:scale(1.1);
-}
+.nav-links a:hover{background:rgba(255,255,255,.2)}
 
-.hamburger {
+.hamburger{
     display:none;
-    font-size:28px;
     margin-left:auto;
+    font-size:28px;
     cursor:pointer;
 }
 
 /* MOBILE MENU */
-.mobile-menu {
+.mobile-menu{
     display:none;
     flex-direction:column;
     position:fixed;
     top:90px;
     right:20px;
-    background:rgba(0,0,0,0.95);
-    border-radius:16px;
+    background:rgba(0,0,0,.95);
     padding:16px 22px;
-    box-shadow:0 0 25px rgba(0,0,0,0.5);
+    border-radius:16px;
     z-index:99999;
 }
 
-.mobile-menu a {
-    color:white;
+.mobile-menu a{
+    color:#fff;
     text-decoration:none;
     font-weight:600;
     padding:10px 0;
 }
 
-/* STAFF PAGE */
-.staff-page {
-    padding:190px 20px 60px; /* ABBASSATO */
+/* MOBILE TITLE */
+.page-title{
+    display:none;
+    font-family:'Luckiest Guy',cursive;
+    font-size:42px;
+    margin:150px 0 30px;
     text-align:center;
-    width:100%;
 }
 
-.staff-grid {
+/* CONTENT */
+.staff-page{
+    padding:180px 20px 60px;
+    width:100%;
+    text-align:center;
+}
+
+.staff-grid{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:30px;
-    margin-bottom:70px;
+    margin-bottom:60px;
 }
 
-.staff-card {
-    background:rgba(255,255,255,0.18);
-    backdrop-filter:blur(6px);
+.staff-card{
+    width:220px;
+    background:rgba(255,255,255,.18);
     border-radius:22px;
     padding:30px 20px;
-    width:220px;
-    text-align:center;
-    box-shadow:0 0 25px rgba(0,0,0,0.25);
     cursor:pointer;
 }
 
-.staff-card:hover {
-    transform:translateY(-8px) scale(1.03);
-}
-
-.staff-card img {
+.staff-card img{
     width:95px;
     height:95px;
     border-radius:50%;
     margin-bottom:15px;
-    border:3px solid rgba(255,255,255,0.35);
 }
 
-.extra-info {
+.extra-info{
     max-height:0;
     overflow:hidden;
     opacity:0;
-    margin-top:0;
 }
 
-.extra-info.open {
+.extra-info.open{
     max-height:200px;
     opacity:1;
-    margin-top:12px;
+    margin-top:10px;
 }
 
-.founder span { color:gold; }
-.admin span { color:#ff4b4b; }
+.founder span{color:gold}
+.admin span{color:#ff4b4b}
 
-.footer {
-    text-align:center;
-    font-size:14px;
-    color:rgba(255,255,255,0.5);
-    margin:40px 0 20px;
-}
+.footer{margin:40px 0 20px;opacity:.6}
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-    .nav-links { display:none; }
-    .hamburger { display:block; }
-    .nav-title { display:none; } /* NASCOSTO SU MOBILE */
-    .staff-card { width:160px; }
-    .staff-page { padding-top:160px; }
+@media(max-width:768px){
+    .nav-links{display:none}
+    .hamburger{display:block}
+    .nav-title{display:none}
+    .page-title{display:block}
+    .staff-page{padding-top:40px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
         <img src="logo.png">
@@ -199,28 +181,22 @@ body {
     <a href="candidature.html">Candidature staff</a>
 </div>
 
+<h1 class="page-title">Staff KLIK</h1>
+
 <section class="staff-page">
 
 <h2>👑 Founder</h2>
 <div class="staff-grid">
     <div class="staff-card founder" onclick="toggleInfo(this)">
-        <img src="founder1.png">
-        <h3>Ked</h3>
-        <span>Founder</span>
+        <img src="founder1.png"><h3>Ked</h3><span>Founder</span>
         <div class="extra-info"><p>Founder & Dev</p></div>
     </div>
-
     <div class="staff-card founder" onclick="toggleInfo(this)">
-        <img src="founder2.png">
-        <h3>Ni89</h3>
-        <span>Founder</span>
+        <img src="founder2.png"><h3>Ni89</h3><span>Founder</span>
         <div class="extra-info"><p>Founder & BotDev</p></div>
     </div>
-
     <div class="staff-card founder" onclick="toggleInfo(this)">
-        <img src="founder3.png">
-        <h3>Nexy</h3>
-        <span>Founder</span>
+        <img src="founder3.png"><h3>Nexy</h3><span>Founder</span>
         <div class="extra-info"><p>Gestione server</p></div>
     </div>
 </div>
@@ -239,17 +215,13 @@ body {
 <div class="footer">v2.0 by Ked</div>
 
 <script>
-function toggleInfo(card) {
-    document.querySelectorAll('.extra-info').forEach(info => {
-        if (!card.contains(info)) info.classList.remove('open');
-    });
-    const info = card.querySelector('.extra-info');
-    if (info) info.classList.toggle('open');
+function toggleMenu(){
+    const m=document.getElementById("mobileMenu");
+    m.style.display=m.style.display==="flex"?"none":"flex";
 }
-
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+function toggleInfo(card){
+    const info=card.querySelector(".extra-info");
+    if(info)info.classList.toggle("open");
 }
 </script>
 
