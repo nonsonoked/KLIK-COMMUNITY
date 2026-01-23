@@ -10,10 +10,21 @@
 
 <style>
 * { box-sizing: border-box; transition: 0.3s ease; }
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #5a00c8, #8f3cff);
+
+    /* SFONDO DESKTOP */
+    background:
+        linear-gradient(rgba(20,0,40,0.65), rgba(20,0,40,0.65)),
+        url("sfondo.png");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     color: white;
     display: flex;
     flex-direction: column;
@@ -28,13 +39,26 @@ body {
     padding: 14px 25px;
     display: flex;
     align-items: center;
+    gap: 18px;
     background: rgba(0,0,0,0.35);
     backdrop-filter: blur(10px);
     z-index: 1000;
 }
 
-.nav-logo img { height: 52px; border-radius: 8px; cursor: pointer; }
+.nav-logo img {
+    height: 52px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
+/* TITOLO NAVBAR (PC) */
+.nav-title {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+/* NAV LINKS */
 .nav-links {
     margin-left: auto;
     display: flex;
@@ -70,9 +94,85 @@ body {
     border-radius: 5px;
 }
 
-/* MOBILE MENU */
+/* TITOLO MOBILE */
+h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 56px;
+    margin-top: 130px;
+    text-align: center;
+}
+
+/* WRAPPER CONTENUTO */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    /* sotto metà pagina su desktop */
+    margin-top: 45vh;
+
+    padding-bottom: 60px;
+}
+
+/* LOGO */
+.logo {
+    width: 220px;
+    height: 220px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    overflow: hidden;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BOTTONE */
+.join-btn {
+    padding: 15px 26px;
+    background: white;
+    color: #5a00c8;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+/* DISCORD WIDGET */
+.discord-widget {
+    width: 520px;
+    height: 650px;
+    border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.35);
+}
+
+/* TESTI */
+.community-text {
+    margin-top: 20px;
+    text-align: center;
+    max-width: 800px;
+}
+
+.version {
+    margin: 40px 0 20px;
+    opacity: 0.6;
+}
+
+/* MOBILE */
 @media (max-width: 900px) {
+
+    /* sfondo semplice */
+    body {
+        background: linear-gradient(135deg, #5a00c8, #8f3cff);
+        background-attachment: scroll;
+    }
+
     .hamburger { display: flex; }
+
+    .nav-title { display: none; }
 
     .nav-links {
         position: absolute;
@@ -87,70 +187,37 @@ body {
     }
 
     .nav-links.active { display: flex; }
-}
 
-h1 {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 56px;
-    margin-top: 130px;
-    text-align: center;
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-}
-
-.logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.2);
-    border: 2px solid rgba(255,255,255,0.3);
-    overflow: hidden;
-}
-
-.logo img { width: 100%; height: 100%; object-fit: cover; }
-
-.join-btn {
-    padding: 15px 26px;
-    background: white;
-    color: #5a00c8;
-    font-weight: 700;
-    border-radius: 12px;
-    text-decoration: none;
-}
-
-iframe {
-    width: 520px;
-    height: 650px;
-    border-radius: 16px;
-    border: 2px solid rgba(255,255,255,0.35);
-}
-
-.community-text {
-    margin-top: 20px;
-    text-align: center;
-    max-width: 800px;
-}
-
-.version { margin: 40px 0 20px; opacity: 0.6; }
-
-@media (max-width: 900px) {
-    iframe { width: 95%; height: 500px; }
     h1 { font-size: 42px; }
+
+    /* contenuto più in alto su mobile */
+    .wrapper {
+        margin-top: 40px;
+    }
+
+    /* widget mobile ottimizzato */
+    .discord-widget {
+        width: 95%;
+        height: 500px;
+    }
+}
+
+/* PC */
+@media (min-width: 901px) {
+    h1 { display: none; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
-        <img src="logo.png">
+        <img src="logo.gif" alt="Logo KLIK">
     </div>
+
+    <div class="nav-title">KLIK COMMUNITY</div>
 
     <div class="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -164,13 +231,22 @@ iframe {
     </div>
 </div>
 
+<!-- TITOLO MOBILE -->
 <h1>KLIK COMMUNITY</h1>
 
+<!-- CONTENUTO -->
 <div class="wrapper">
-    <div class="logo"><img src="logo.png"></div>
-    <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
+    <div class="logo">
+        <img src="logo.gif" alt="Logo animato">
+    </div>
 
-    <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark"></iframe>
+    <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
+        Entra nel server
+    </a>
+
+    <iframe class="discord-widget"
+        src="https://discord.com/widget?id=1329496584987082814&theme=dark">
+    </iframe>
 </div>
 
 <div class="community-text">
@@ -187,5 +263,3 @@ function toggleMenu() {
 
 </body>
 </html>
-
-
