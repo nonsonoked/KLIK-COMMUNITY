@@ -9,6 +9,7 @@
 
 <style>
 * { box-sizing: border-box; transition: 0.3s ease; }
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -27,13 +28,31 @@ body {
     padding: 14px 25px;
     display: flex;
     align-items: center;
+    gap: 18px;
     background: rgba(0,0,0,0.35);
     backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
-.nav-logo img { height: 52px; border-radius: 8px; }
+.nav-logo img {
+    height: 52px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-.nav-links { margin-left: auto; display: flex; gap: 22px; }
+/* TITOLO NAVBAR (SOLO PC) */
+.nav-title {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+/* NAV LINKS */
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    gap: 22px;
+}
 
 .nav-links a {
     color: white;
@@ -43,25 +62,27 @@ body {
     border-radius: 10px;
 }
 
-/* HAMBURGER */
-.hamburger { display: none; flex-direction: column; gap: 5px; margin-left: auto; cursor: pointer; }
-.hamburger span { width: 28px; height: 3px; background: white; border-radius: 5px; }
-
-@media (max-width: 900px) {
-    .hamburger { display: flex; }
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 15px;
-        background: rgba(0,0,0,0.9);
-        flex-direction: column;
-        padding: 15px;
-        border-radius: 14px;
-        display: none;
-    }
-    .nav-links.active { display: flex; }
+.nav-links a:hover {
+    background: rgba(255,255,255,0.2);
 }
 
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+}
+
+/* TITOLO CENTRALE (SOLO MOBILE) */
 h1 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 56px;
@@ -69,16 +90,22 @@ h1 {
     text-align: center;
 }
 
+/* CONTENUTO */
 .community-section {
     width: 90%;
     max-width: 900px;
     background: rgba(255,255,255,0.14);
     border-radius: 20px;
     padding: 40px 30px;
-    margin: 60px 0;
+
+    /* 👇 CONTENUTO ABBASSATO */
+    margin-top: 90px;
+    margin-bottom: 60px;
+
     text-align: center;
 }
 
+/* BOTTONE */
 .staff-btn {
     margin-top: 20px;
     padding: 12px 25px;
@@ -89,20 +116,59 @@ h1 {
     text-decoration: none;
 }
 
-.version { margin: 40px 0 20px; opacity: 0.6; }
+/* VERSIONE */
+.version {
+    margin: 40px 0 20px;
+    opacity: 0.6;
+}
 
+/* MOBILE */
 @media (max-width: 900px) {
-    h1 { font-size: 42px; }
+    h1 { 
+        font-size: 42px;
+        display: block;
+    }
+
+    .hamburger { display: flex; }
+
+    .nav-title { display: none; }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        background: rgba(0,0,0,0.9);
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 14px;
+        display: none;
+    }
+
+    .nav-links.active { display: flex; }
+
+    /* un filo meno spazio su mobile */
+    .community-section {
+        margin-top: 60px;
+    }
+}
+
+/* PC */
+@media (min-width: 901px) {
+    h1 { display: none; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
-        <img src="logo.png">
+        <img src="logo.png" alt="Logo KLIK">
     </div>
+
+    <!-- SOLO PC -->
+    <div class="nav-title">Chi Siamo</div>
 
     <div class="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -116,16 +182,19 @@ h1 {
     </div>
 </div>
 
+<!-- SOLO MOBILE -->
 <h1>Chi Siamo</h1>
 
 <div class="community-section">
-<p>KLIK COMMUNITY nasce per creare un server per amici.</p>
-<p>Con la crescita dei membri è diventato qualcosa di più grande.</p>
-<p>Potrai scegliere giochi e sbloccare categorie dedicate.</p>
-<p>Meme, clip e divertimento ogni giorno.</p>
-<p>Founder: Ked & Nik.</p>
+    <p>KLIK COMMUNITY nasce per creare un server per amici.</p>
+    <p>Con la crescita dei membri è diventato qualcosa di più grande.</p>
+    <p>Potrai scegliere giochi e sbloccare categorie dedicate.</p>
+    <p>Meme, clip e divertimento ogni giorno.</p>
+    <p>Founder: Ked & Nik.</p>
 
-<a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
+    <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
+        Entra nel server
+    </a>
 </div>
 
 <div class="version">v2.0 by Ked</div>
