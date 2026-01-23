@@ -11,9 +11,22 @@
 <style>
 * { box-sizing:border-box; margin:0; padding:0; transition:0.25s ease; font-family:'Poppins',sans-serif; }
 
+/* BASE (MOBILE DEFAULT) */
 body{
     background:linear-gradient(135deg,#5a00c8,#a144ff);
     color:white;
+}
+
+/* SFONDO DESKTOP */
+@media(min-width:901px){
+    body{
+        background:
+            linear-gradient(rgba(20,0,40,0.7), rgba(20,0,40,0.7)),
+            url("sfondo_chisiamo.png");
+        background-size:cover;
+        background-position:center top;
+        background-attachment:fixed;
+    }
 }
 
 /* NAVBAR */
@@ -57,7 +70,7 @@ body{
     transform:scale(1.1);
 }
 
-/* Hamburger */
+/* HAMBURGER */
 .hamburger{
     display:none;
     font-size:28px;
@@ -86,7 +99,7 @@ body{
     padding:10px 0;
 }
 
-/* PAGE WRAPPER (ALLINEATO A CANDIDATURE) */
+/* PAGE WRAPPER */
 .page-wrapper{
     padding:200px 20px 80px;
     display:flex;
@@ -159,7 +172,6 @@ h1{
 
     <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="regole.html">Regole</a>
         <a href="chi-siamo.html">Chi siamo</a>
         <a href="staff.html">Staff</a>
         <a href="candidature.html">Candidature staff</a>
@@ -171,7 +183,6 @@ h1{
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
-    <a href="regole.html">Regole</a>
     <a href="chi-siamo.html">Chi siamo</a>
     <a href="staff.html">Staff</a>
     <a href="candidature.html">Candidature staff</a>
@@ -186,7 +197,7 @@ h1{
         <p>Con la crescita dei membri è diventato qualcosa di più grande.</p>
         <p>Puoi scegliere giochi, sbloccare categorie dedicate e partecipare attivamente.</p>
         <p>Meme, clip e divertimento ogni giorno.</p>
-        <p><strong>Founder:</strong> Ked & Ni.</p>
+        <p><strong>Founder:</strong> Ked & Nik.</p>
 
         <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
             Entra nel server
