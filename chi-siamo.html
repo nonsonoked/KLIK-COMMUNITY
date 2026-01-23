@@ -6,155 +6,145 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
 
 <style>
-* { box-sizing: border-box; transition: 0.3s ease; }
+* { box-sizing:border-box; margin:0; padding:0; transition:0.25s ease; font-family:'Poppins',sans-serif; }
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #5a00c8, #8f3cff);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body{
+    background:linear-gradient(135deg,#5a00c8,#a144ff);
+    color:white;
 }
 
 /* NAVBAR */
-.navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    padding: 14px 25px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
+.navbar{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    padding:15px 40px;
+    display:flex;
+    align-items:center;
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(8px);
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+    z-index:9999;
 }
 
-.nav-logo img {
-    height: 52px;
-    border-radius: 8px;
-    cursor: pointer;
+.nav-logo img{
+    height:55px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-/* TITOLO NAVBAR (SOLO PC) */
-.nav-title {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 26px;
-    letter-spacing: 2px;
+.nav-links{
+    display:flex;
+    gap:35px;
+    margin-left:auto;
 }
 
-/* NAV LINKS */
-.nav-links {
-    margin-left: auto;
-    display: flex;
-    gap: 22px;
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    font-size:17px;
+    padding:8px 14px;
+    border-radius:10px;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 10px;
+.nav-links a:hover{
+    background:rgba(255,255,255,0.2);
+    transform:scale(1.1);
 }
 
-.nav-links a:hover {
-    background: rgba(255,255,255,0.2);
+/* Hamburger */
+.hamburger{
+    display:none;
+    font-size:28px;
+    margin-left:auto;
+    cursor:pointer;
 }
 
-/* HAMBURGER */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    margin-left: auto;
-    cursor: pointer;
+/* MOBILE MENU */
+.mobile-menu{
+    display:none;
+    flex-direction:column;
+    position:fixed;
+    top:90px;
+    right:20px;
+    background:rgba(0,0,0,0.95);
+    border-radius:16px;
+    padding:16px 22px;
+    box-shadow:0 0 25px rgba(0,0,0,0.5);
+    z-index:99999;
 }
 
-.hamburger span {
-    width: 28px;
-    height: 3px;
-    background: white;
-    border-radius: 5px;
+.mobile-menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    padding:10px 0;
 }
 
-/* TITOLO CENTRALE (SOLO MOBILE) */
-h1 {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 56px;
-    margin-top: 130px;
-    text-align: center;
+/* PAGE WRAPPER (ALLINEATO A CANDIDATURE) */
+.page-wrapper{
+    padding:200px 20px 80px;
+    display:flex;
+    justify-content:center;
 }
 
-/* CONTENUTO */
-.community-section {
-    width: 90%;
-    max-width: 900px;
-    background: rgba(255,255,255,0.14);
-    border-radius: 20px;
-    padding: 40px 30px;
-
-    /* 👇 CONTENUTO ABBASSATO */
-    margin-top: 90px;
-    margin-bottom: 60px;
-
-    text-align: center;
+.content{
+    width:90%;
+    max-width:900px;
+    text-align:center;
+    background:rgba(255,255,255,0.12);
+    border-radius:20px;
+    padding:40px 30px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+    backdrop-filter:blur(8px);
 }
 
-/* BOTTONE */
-.staff-btn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: white;
-    color: #5a00c8;
-    font-weight: 700;
-    border-radius: 12px;
-    text-decoration: none;
+h1{
+    font-family:'Luckiest Guy',cursive;
+    font-size:60px;
+    margin-bottom:20px;
 }
 
-/* VERSIONE */
-.version {
-    margin: 40px 0 20px;
-    opacity: 0.6;
+.content p{
+    font-size:18px;
+    margin-bottom:14px;
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
-    h1 { 
-        font-size: 42px;
-        display: block;
-    }
-
-    .hamburger { display: flex; }
-
-    .nav-title { display: none; }
-
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 15px;
-        background: rgba(0,0,0,0.9);
-        flex-direction: column;
-        padding: 15px;
-        border-radius: 14px;
-        display: none;
-    }
-
-    .nav-links.active { display: flex; }
-
-    /* un filo meno spazio su mobile */
-    .community-section {
-        margin-top: 60px;
-    }
+.staff-btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 25px;
+    background:white;
+    color:#5a00c8;
+    font-weight:700;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:18px;
 }
 
-/* PC */
-@media (min-width: 901px) {
-    h1 { display: none; }
+.staff-btn:hover{
+    background:#ddd;
+    transform:scale(1.05);
+}
+
+.version{
+    text-align:center;
+    font-size:14px;
+    color:rgba(255,255,255,0.5);
+    margin:40px 0 20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .nav-links{ display:none; }
+    .hamburger{ display:block; }
+    h1{ font-size:38px; }
+    .page-wrapper{ padding-top:150px; }
 }
 </style>
 </head>
@@ -164,44 +154,50 @@ h1 {
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
-        <img src="logo.png" alt="Logo KLIK">
+        <img src="logo.png">
     </div>
 
-    <!-- SOLO PC -->
-    <div class="nav-title">Chi Siamo</div>
-
-    <div class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-    </div>
-
-    <div class="nav-links" id="navMenu">
+    <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="chi-siamo.html">Chi siamo</a>
         <a href="staff.html">Staff</a>
         <a href="candidature.html">Candidature staff</a>
     </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 </div>
 
-<!-- SOLO MOBILE -->
-<h1>Chi Siamo</h1>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="staff.html">Staff</a>
+    <a href="candidature.html">Candidature staff</a>
+</div>
 
-<div class="community-section">
-    <p>KLIK COMMUNITY nasce per creare un server per amici.</p>
-    <p>Con la crescita dei membri è diventato qualcosa di più grande.</p>
-    <p>Potrai scegliere giochi e sbloccare categorie dedicate.</p>
-    <p>Meme, clip e divertimento ogni giorno.</p>
-    <p>Founder: Ked & Nik.</p>
+<!-- CONTENT -->
+<div class="page-wrapper">
+    <div class="content">
+        <h1>Chi Siamo</h1>
 
-    <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
-        Entra nel server
-    </a>
+        <p>KLIK COMMUNITY nasce per creare un server tra amici.</p>
+        <p>Con la crescita dei membri è diventato qualcosa di più grande.</p>
+        <p>Puoi scegliere giochi, sbloccare categorie dedicate e partecipare attivamente.</p>
+        <p>Meme, clip e divertimento ogni giorno.</p>
+        <p><strong>Founder:</strong> Ked & Nik.</p>
+
+        <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
+            Entra nel server
+        </a>
+    </div>
 </div>
 
 <div class="version">v2.0 by Ked</div>
 
 <script>
-function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("active");
+function toggleMenu(){
+    const menu=document.getElementById("mobileMenu");
+    menu.style.display = menu.style.display==="flex" ? "none" : "flex";
 }
 </script>
 
