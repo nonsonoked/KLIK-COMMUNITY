@@ -34,10 +34,23 @@ body {
     z-index:9999;
 }
 
+.nav-logo {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
+}
+
 .nav-logo img {
     height:55px;
     border-radius:8px;
-    cursor:pointer;
+}
+
+/* TITOLO NAVBAR (SOLO PC) */
+.nav-title {
+    font-family:'Luckiest Guy', cursive;
+    font-size:26px;
+    letter-spacing:1px;
 }
 
 .nav-links {
@@ -67,6 +80,7 @@ body {
     cursor:pointer;
 }
 
+/* MOBILE MENU */
 .mobile-menu {
     display:none;
     flex-direction:column;
@@ -89,15 +103,9 @@ body {
 
 /* STAFF PAGE */
 .staff-page {
-    padding:150px 20px 60px;
+    padding:190px 20px 60px; /* ABBASSATO */
     text-align:center;
     width:100%;
-}
-
-.staff-page h1 {
-    font-family:'Luckiest Guy',cursive;
-    font-size:60px;
-    margin-bottom:15px;
 }
 
 .staff-grid {
@@ -154,11 +162,13 @@ body {
     margin:40px 0 20px;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .nav-links { display:none; }
     .hamburger { display:block; }
-    .staff-page h1 { font-size:38px; }
+    .nav-title { display:none; } /* NASCOSTO SU MOBILE */
     .staff-card { width:160px; }
+    .staff-page { padding-top:160px; }
 }
 </style>
 </head>
@@ -169,6 +179,7 @@ body {
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
         <img src="logo.png">
+        <div class="nav-title">STAFF</div>
     </div>
 
     <div class="nav-links">
@@ -189,7 +200,6 @@ body {
 </div>
 
 <section class="staff-page">
-<h1>Staff KLIK</h1>
 
 <h2>👑 Founder</h2>
 <div class="staff-grid">
@@ -217,38 +227,13 @@ body {
 
 <h2>🛡️ Admin</h2>
 <div class="staff-grid">
-
-    <div class="staff-card admin" onclick="toggleInfo(this)">
-        <img src="admin1.png">
-        <h3>Dragon</h3>
-        <span>Admin</span>
-    </div>
-
-    <div class="staff-card admin" onclick="toggleInfo(this)">
-        <img src="admin2.png">
-        <h3>Amon</h3>
-        <span>Admin</span>
-    </div>
-
-    <div class="staff-card admin" onclick="toggleInfo(this)">
-        <img src="admin3.png">
-        <h3>Skibidi count</h3>
-        <span>Admin</span>
-    </div>
-
-    <div class="staff-card admin" onclick="toggleInfo(this)">
-        <img src="admin4.png">
-        <h3>Gesusenzaccento</h3>
-        <span>Admin</span>
-    </div>
-
-    <div class="staff-card admin" onclick="toggleInfo(this)">
-        <img src="admin5.png">
-        <h3>nero2.2</h3>
-        <span>Admin</span>
-    </div>
-
+    <div class="staff-card admin"><img src="admin1.png"><h3>Dragon</h3><span>Admin</span></div>
+    <div class="staff-card admin"><img src="admin2.png"><h3>Amon</h3><span>Admin</span></div>
+    <div class="staff-card admin"><img src="admin3.png"><h3>Skibidi count</h3><span>Admin</span></div>
+    <div class="staff-card admin"><img src="admin4.png"><h3>Gesusenzaccento</h3><span>Admin</span></div>
+    <div class="staff-card admin"><img src="admin5.png"><h3>nero2.2</h3><span>Admin</span></div>
 </div>
+
 </section>
 
 <div class="footer">v2.0 by Ked</div>
