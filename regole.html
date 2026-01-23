@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Regole - KLIK COMMUNITY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
+
+<style>
+* { box-sizing: border-box; transition: 0.3s ease; }
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background:
+        linear-gradient(rgba(20,0,40,0.7), rgba(20,0,40,0.7)),
+        url("sfondo.png");
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    padding: 14px 25px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.nav-logo img {
+    height: 52px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.nav-title {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 10px;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+}
+
+/* TITOLO */
+.page-title {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 140px;
+    margin-bottom: 20px;
+}
+
+/* CONTENUTO */
+.rules-wrapper {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* CARD REGOLA */
+.rule-card {
+    background: rgba(255,255,255,0.12);
+    border-radius: 22px;
+    padding: 28px 26px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    backdrop-filter: blur(10px);
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeUp 0.8s forwards;
+}
+
+.rule-card:nth-child(1){animation-delay:0.1s}
+.rule-card:nth-child(2){animation-delay:0.2s}
+.rule-card:nth-child(3){animation-delay:0.3s}
+.rule-card:nth-child(4){animation-delay:0.4s}
+.rule-card:nth-child(5){animation-delay:0.5s}
+.rule-card:nth-child(6){animation-delay:0.6s}
+
+.rule-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 0 25px rgba(150,80,255,0.6);
+}
+
+/* TITOLI REGOLA */
+.rule-card h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #ffd6ff;
+}
+
+/* FOOTER */
+.version {
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0.6;
+}
+
+/* ANIMAZIONE */
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    body {
+        background: linear-gradient(135deg, #5a00c8, #8f3cff);
+        background-attachment: scroll;
+    }
+
+    .hamburger { display: flex; }
+    .nav-title { display: none; }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        background: rgba(0,0,0,0.9);
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 14px;
+        display: none;
+        gap: 15px;
+    }
+
+    .nav-links.active { display: flex; }
+
+    .page-title { font-size: 42px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-logo" onclick="location.href='index.html'">
+        <img src="logo.gif">
+    </div>
+
+    <div class="nav-title">KLIK COMMUNITY</div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="staff.html">Staff</a>
+        <a href="candidature.html">Candidature</a>
+    </div>
+</div>
+
+<h1 class="page-title">📜 Regolamento</h1>
+
+<div class="rules-wrapper">
+
+<div class="rule-card">
+<h2>1) Linguaggio appropriato</h2>
+<p>Ogni tipo di offesa, minaccia o discriminazione non è tollerato nel server e sarà punito.</p>
+<p>Invitiamo gli utenti a silenziare le clip di gioco contenenti insulti o minacce.</p>
+</div>
+
+<div class="rule-card">
+<h2>2) Comportamenti inappropriati</h2>
+<p>Trolling e comportamenti volti a infastidire altri utenti saranno puniti.</p>
+<p>È vietato contattare altri utenti in privato per spam o disturbo.</p>
+</div>
+
+<div class="rule-card">
+<h2>3) Contenuti inappropriati</h2>
+<p>È vietato inviare materiale pornografico, violento o disturbante.</p>
+<p>Le clip di videogiochi violenti sono consentite solo con spoiler.</p>
+<p>Vietato inviare file o link dannosi.</p>
+<p>Foto profilo e nickname non devono contenere offese o provocazioni.</p>
+</div>
+
+<div class="rule-card">
+<h2>4) Informazioni personali</h2>
+<p>È vietato diffondere dati personali di terzi senza consenso.</p>
+<p>In assenza di prova del consenso, l’utente sarà punito.</p>
+</div>
+
+<div class="rule-card">
+<h2>5) Spam</h2>
+<p>Lo spam è consentito solo ai Content Creator e solo negli appositi canali.</p>
+<p>Ogni altro tipo di spam sarà punito.</p>
+</div>
+
+<div class="rule-card">
+<h2>6) Contenuti illegali</h2>
+<p>Vietato inviare software piratati, metodi di hacking o contenuti illegali.</p>
+</div>
+
+<div class="rule-card">
+<p><strong>Invitiamo tutti gli utenti a rispettare il regolamento.</strong><br>
+Se non sei disposto a rispettarlo, esci dal server. Grazie.</p>
+</div>
+
+</div>
+
+<div class="version">v2.0 by Ked</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
