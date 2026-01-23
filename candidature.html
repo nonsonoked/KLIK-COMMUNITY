@@ -2,153 +2,168 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Candidature Staff - KLIK COMMUNITY</title>
+<title>KLIK COMMUNITY – Candidature Staff</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="logo.png">
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; transition:0.25s ease; font-family:'Poppins',sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;transition:.25s}
 
-body {
-    background: linear-gradient(135deg, #5a00c8, #a144ff);
-    color:white;
+body{
+    background:linear-gradient(135deg,#5a00c8,#a144ff);
+    color:#fff;
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
 /* NAVBAR */
-.navbar {
+.navbar{
     width:100%;
     position:fixed;
     top:0;
-    left:0;
     padding:15px 40px;
     display:flex;
     align-items:center;
-    background:rgba(0,0,0,0.35);
+    background:rgba(0,0,0,.35);
     backdrop-filter:blur(8px);
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
     z-index:9999;
 }
 
-.nav-logo img {
-    height:55px;
-    border-radius:8px;
+.nav-logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
     cursor:pointer;
 }
 
-.nav-links {
-    display:flex;
-    gap:35px;
-    margin-left:auto;
+.nav-logo img{height:55px;border-radius:8px}
+
+.nav-title{
+    font-family:'Luckiest Guy',cursive;
+    font-size:26px;
 }
 
-.nav-links a {
-    color:white;
+.nav-links{
+    margin-left:auto;
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#fff;
     text-decoration:none;
     font-weight:600;
-    font-size:17px;
     padding:8px 14px;
     border-radius:10px;
 }
 
-.nav-links a:hover {
-    background:rgba(255,255,255,0.2);
-    transform:scale(1.1);
-}
+.nav-links a:hover{background:rgba(255,255,255,.2)}
 
-/* Hamburger */
-.hamburger {
+.hamburger{
     display:none;
-    font-size:28px;
     margin-left:auto;
+    font-size:28px;
     cursor:pointer;
 }
 
 /* MOBILE MENU */
-.mobile-menu {
+.mobile-menu{
     display:none;
     flex-direction:column;
     position:fixed;
     top:90px;
     right:20px;
-    background:rgba(0,0,0,0.95);
-    border-radius:16px;
+    background:rgba(0,0,0,.95);
     padding:16px 22px;
-    box-shadow:0 0 25px rgba(0,0,0,0.5);
+    border-radius:16px;
     z-index:99999;
 }
 
-.mobile-menu a {
-    color:white;
+.mobile-menu a{
+    color:#fff;
     text-decoration:none;
     font-weight:600;
     padding:10px 0;
 }
 
-/* PAGE */
-h1 {
+/* MOBILE TITLE */
+.page-title{
+    display:none;
     font-family:'Luckiest Guy',cursive;
-    font-size:60px;
-    margin-top:150px;
+    font-size:42px;
+    margin:150px 0 30px;
     text-align:center;
-    text-shadow:2px 2px 8px rgba(0,0,0,0.6);
 }
 
-.community-section {
-    width:90%;
-    max-width:900px;
-    background:rgba(255,255,255,0.12);
-    border-radius:20px;
-    padding:40px 30px;
-    margin:60px 0;
-    text-align:center;
-    box-shadow:0 8px 25px rgba(0,0,0,0.25);
-    backdrop-filter:blur(8px);
+/* CONTENT */
+.page-wrapper{
+    padding:200px 20px 80px;
+    width:100%;
+    display:flex;
+    justify-content:center;
 }
 
-.staff-btn {
+.community-section{
+    width:100%;
+    max-width:850px;
+    background:rgba(255,255,255,.16);
+    border-radius:24px;
+    padding:45px 35px;
+    text-align:center;
+}
+
+.community-section h2{
+    font-family:'Luckiest Guy',cursive;
+    font-size:42px;
+    margin-bottom:25px;
+}
+
+.community-section p{
+    font-size:17px;
+    margin-bottom:18px;
+    line-height:1.6;
+}
+
+.staff-btn{
     display:inline-block;
-    margin-top:20px;
-    padding:12px 25px;
-    background:white;
+    margin-top:35px;
+    padding:15px 30px;
+    background:#fff;
     color:#5a00c8;
     font-weight:700;
-    border-radius:12px;
+    border-radius:14px;
     text-decoration:none;
-    font-size:18px;
 }
 
-.staff-btn:hover {
-    background:#ddd;
+.staff-btn:hover{
     transform:scale(1.05);
 }
 
-.version {
-    text-align:center;
-    font-size:14px;
-    color:rgba(255,255,255,0.5);
+.footer{
     margin:40px 0 20px;
+    opacity:.6;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .nav-links { display:none; }
-    .hamburger { display:block; }
-    h1 { font-size:38px; }
+/* RESPONSIVE */
+@media(max-width:768px){
+    .nav-links{display:none}
+    .hamburger{display:block}
+    .nav-title{display:none}
+    .page-title{display:block}
+    .page-wrapper{padding-top:60px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
         <img src="logo.png">
+        <div class="nav-title">CANDIDATURE</div>
     </div>
 
     <div class="nav-links">
@@ -161,7 +176,6 @@ h1 {
     <div class="hamburger" onclick="toggleMenu()">☰</div>
 </div>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="chi-siamo.html">Chi siamo</a>
@@ -169,24 +183,29 @@ h1 {
     <a href="candidature.html">Candidature staff</a>
 </div>
 
-<h1>Candidature Staff</h1>
+<h1 class="page-title">Candidature Staff</h1>
 
-<div class="community-section">
-    <p>Per candidarti come staff su KLIK COMMUNITY compila il modulo.</p>
-    <p>Se accettato, verrai contattato per un colloquio vocale.</p>
-    <p>Buona fortuna!</p>
+<div class="page-wrapper">
+    <div class="community-section">
+        <h2>Entra nello Staff</h2>
 
-    <a class="staff-btn" href="https://forms.gle/parkAAJpJURWkTKK8" target="_blank">
-        MODULO CANDIDATURA
-    </a>
+        <p>Vuoi entrare a far parte dello staff di KLIK COMMUNITY?</p>
+        <p>Siamo sempre alla ricerca di persone serie, attive e con voglia di contribuire.</p>
+        <p>Potrai aiutare nella moderazione, eventi e gestione della community.</p>
+        <p>Le candidature vengono valutate direttamente su Discord.</p>
+
+        <a class="staff-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
+            Invia la candidatura
+        </a>
+    </div>
 </div>
 
-<div class="version">v2.0 by Ked</div>
+<div class="footer">v2.0 by Ked</div>
 
 <script>
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+function toggleMenu(){
+    const m=document.getElementById("mobileMenu");
+    m.style.display=m.style.display==="flex"?"none":"flex";
 }
 </script>
 
