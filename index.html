@@ -14,17 +14,13 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-
-    /* SFONDO DESKTOP */
     background:
         linear-gradient(rgba(20,0,40,0.65), rgba(20,0,40,0.65)),
         url("sfondo.png");
-
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     color: white;
     display: flex;
     flex-direction: column;
@@ -51,14 +47,12 @@ body {
     cursor: pointer;
 }
 
-/* TITOLO NAVBAR (PC) */
 .nav-title {
     font-family: 'Luckiest Guy', cursive;
     font-size: 26px;
     letter-spacing: 2px;
 }
 
-/* NAV LINKS */
 .nav-links {
     margin-left: auto;
     display: flex;
@@ -94,7 +88,7 @@ body {
     border-radius: 5px;
 }
 
-/* TITOLO MOBILE */
+/* MOBILE TITLE */
 h1 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 56px;
@@ -102,20 +96,16 @@ h1 {
     text-align: center;
 }
 
-/* WRAPPER CONTENUTO */
+/* CONTENT */
 .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
-
-    /* sotto metà pagina su desktop */
     margin-top: 45vh;
-
     padding-bottom: 60px;
 }
 
-/* LOGO */
 .logo {
     width: 220px;
     height: 220px;
@@ -131,7 +121,6 @@ h1 {
     object-fit: cover;
 }
 
-/* BOTTONE */
 .join-btn {
     padding: 15px 26px;
     background: white;
@@ -141,7 +130,6 @@ h1 {
     text-decoration: none;
 }
 
-/* DISCORD WIDGET */
 .discord-widget {
     width: 520px;
     height: 650px;
@@ -149,7 +137,6 @@ h1 {
     border: 2px solid rgba(255,255,255,0.35);
 }
 
-/* TESTI */
 .community-text {
     margin-top: 20px;
     text-align: center;
@@ -161,17 +148,46 @@ h1 {
     opacity: 0.6;
 }
 
+/* SIDE WIDGETS (DESKTOP) */
+.side-widgets {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 900;
+}
+
+.side-widgets.left { left: 20px; }
+.side-widgets.right { right: 20px; }
+
+.side-btn {
+    padding: 14px 18px;
+    background: rgba(0,0,0,0.45);
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 14px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+    text-align: center;
+    width: 160px;
+}
+
+.side-btn:hover {
+    background: rgba(255,255,255,0.15);
+    transform: scale(1.08);
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
-
-    /* sfondo semplice */
     body {
         background: linear-gradient(135deg, #5a00c8, #8f3cff);
         background-attachment: scroll;
     }
 
     .hamburger { display: flex; }
-
     .nav-title { display: none; }
 
     .nav-links {
@@ -190,16 +206,14 @@ h1 {
 
     h1 { font-size: 42px; }
 
-    /* contenuto più in alto su mobile */
-    .wrapper {
-        margin-top: 40px;
-    }
+    .wrapper { margin-top: 40px; }
 
-    /* widget mobile ottimizzato */
     .discord-widget {
         width: 95%;
         height: 500px;
     }
+
+    .side-widgets { display: none; }
 }
 
 /* PC */
@@ -223,18 +237,29 @@ h1 {
         <span></span><span></span><span></span>
     </div>
 
+    <!-- MENU (PC + MOBILE) -->
     <div class="nav-links" id="navMenu">
         <a href="index.html">Home</a>
+        <a href="regole.html">Regole</a>
         <a href="chi-siamo.html">Chi siamo</a>
         <a href="staff.html">Staff</a>
         <a href="candidature.html">Candidature staff</a>
     </div>
 </div>
 
-<!-- TITOLO MOBILE -->
+<!-- SIDE WIDGETS DESKTOP -->
+<div class="side-widgets left">
+    <a class="side-btn" href="regole.html">📜 Regole</a>
+    <a class="side-btn" href="staff.html">🛡️ Staff</a>
+</div>
+
+<div class="side-widgets right">
+    <a class="side-btn" href="chi-siamo.html">ℹ️ Chi siamo</a>
+    <a class="side-btn" href="candidature.html">📝 Candidature</a>
+</div>
+
 <h1>KLIK COMMUNITY</h1>
 
-<!-- CONTENUTO -->
 <div class="wrapper">
     <div class="logo">
         <img src="logo.gif" alt="Logo animato">
