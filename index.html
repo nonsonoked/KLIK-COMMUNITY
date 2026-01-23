@@ -3,59 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <title>KLIK COMMUNITY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="logo.png" sizes="32x32">
+<link rel="icon" type="image/png" href="logo.png">
+
 <style>
-* { transition: 0.3s ease; box-sizing: border-box; }
-body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #5a00c8, #a144ff); color: white; scroll-behavior: smooth; display: flex; flex-direction: column; align-items: center; }
+* { box-sizing: border-box; transition: 0.3s ease; }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #5a00c8, #8f3cff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* NAVBAR */
-.navbar { width: 100%; position: fixed; top: 0; left: 0; padding: 15px 40px; display: flex; justify-content: flex-start; align-items: center; background: rgba(0,0,0,0.35); backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; }
-.nav-logo img { height: 55px; border-radius: 8px; cursor: pointer; }
-.nav-links { display: flex; gap: 35px; margin-left: auto; } /* Spinge i link a destra */
-.nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 17px; padding: 8px 14px; border-radius: 10px; }
-.nav-links a:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    padding: 14px 25px;
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
 
-h1 { font-family: 'Luckiest Guy', cursive; font-size: 60px; margin-top: 120px; margin-bottom: 30px; text-align: center; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
+.nav-logo img { height: 52px; border-radius: 8px; cursor: pointer; }
 
-/* WRAPPER PRINCIPALE */
-.wrapper { display: flex; flex-direction: column; align-items: center; gap: 30px; margin-bottom: 40px; }
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    gap: 22px;
+}
 
-/* LOGO + TASTO */
-.logo-btn-wrapper { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 25px; margin-bottom: 30px; flex-wrap: wrap; }
-.logo { width: 160px; height: 160px; border-radius: 20px; background: rgba(255,255,255,0.25); display: flex; justify-content: center; align-items: center; border: 2px solid rgba(255,255,255,0.35); overflow: hidden; transition: 0.3s; }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 10px;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+}
+
+/* MOBILE MENU */
+@media (max-width: 900px) {
+    .hamburger { display: flex; }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        background: rgba(0,0,0,0.9);
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 14px;
+        display: none;
+        gap: 15px;
+    }
+
+    .nav-links.active { display: flex; }
+}
+
+h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 56px;
+    margin-top: 130px;
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    overflow: hidden;
+}
+
 .logo img { width: 100%; height: 100%; object-fit: cover; }
-.logo:hover { transform: scale(1.07) rotate(3deg); }
-.join-btn { display: inline-block; padding: 16px 28px; background: #ffffff; color: #5a00c8; font-weight: 600; border-radius: 12px; text-decoration: none; font-size: 20px; }
-.join-btn:hover { background: #ddd; transform: scale(1.05); }
 
-/* WIDGET DISCORD */
-iframe { width: 520px; height: 650px; border-radius: 15px; border: 2px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.2); }
+.join-btn {
+    padding: 15px 26px;
+    background: white;
+    color: #5a00c8;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+}
 
-/* TESTO SOTTO IL WIDGET */
-.community-text { margin-top: 30px; font-size: 18px; text-align: center; max-width: 800px; }
+iframe {
+    width: 520px;
+    height: 650px;
+    border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.35);
+}
 
-#totop { position: fixed; bottom: 25px; right: 25px; padding: 12px 16px; background: white; color: #5a00c8; font-weight: 800; border-radius: 50%; text-decoration: none; font-size: 20px; display: none; box-shadow: 0 0 15px rgba(0,0,0,0.4); }
-#totop:hover { transform: scale(1.2) rotate(8deg); }
+.community-text {
+    margin-top: 20px;
+    text-align: center;
+    max-width: 800px;
+}
 
-.version { text-align: center; font-size: 14px; color: rgba(255,255,255,0.5); margin: 40px 0 20px 0; }
+.version { margin: 40px 0 20px; opacity: 0.6; }
 
 @media (max-width: 900px) {
-    iframe { width: 90%; height: 500px; }
-    .logo-btn-wrapper { flex-direction: column; gap: 20px; }
-    .logo { width: 140px; height: 140px; }
-    .join-btn { font-size: 18px; padding: 14px 24px; }
+    iframe { width: 95%; height: 500px; }
+    h1 { font-size: 42px; }
 }
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="nav-logo" onclick="location.href='index.html'">
         <img src="logo.png">
     </div>
-    <div class="nav-links">
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="nav-links" id="navMenu">
         <a href="index.html">Home</a>
         <a href="chi-siamo.html">Chi siamo</a>
         <a href="staff.html">Staff</a>
@@ -66,31 +167,23 @@ iframe { width: 520px; height: 650px; border-radius: 15px; border: 2px solid rgb
 <h1>KLIK COMMUNITY</h1>
 
 <div class="wrapper">
-    <!-- LOGO + TASTO -->
-    <div class="logo-btn-wrapper">
-        <div class="logo">
-            <img src="logo.png" alt="Logo KLIK COMMUNITY">
-        </div>
-        <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
-    </div>
+    <div class="logo"><img src="logo.png"></div>
+    <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">Entra nel server</a>
 
-    <!-- WIDGET DISCORD -->
-    <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark"></iframe>
 </div>
 
 <div class="community-text">
-    Entra ora nella nostra community: fai amicizia e gioca con tante altre persone ai tuoi giochi preferiti!
+    Entra ora nella nostra community e gioca con altri utenti!
 </div>
 
-<a id="totop" href="#">▲</a>
-<div class="version">v1.4 by Ked</div>
+<div class="version">v2.0 by Ked</div>
 
 <script>
-window.onscroll = function() {
-    const btn = document.getElementById("totop");
-    btn.style.display = document.documentElement.scrollTop > 200 ? "block" : "none";
-};
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
 </script>
+
 </body>
 </html>
-
