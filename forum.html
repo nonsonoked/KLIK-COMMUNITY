@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>KLIK COMMUNITY - Forum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
+
+<style>
+* { box-sizing: border-box; transition: 0.3s ease; }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(20,0,40,0.65), rgba(20,0,40,0.65)), url("forum.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.navbar { width: 100%; position: fixed; top: 0; padding: 14px 25px; display: flex; align-items: center; gap: 18px; background: rgba(0,0,0,0.35); backdrop-filter: blur(10px); z-index: 1000; }
+.nav-logo img { height: 52px; border-radius: 8px; cursor: pointer; }
+.nav-title { font-family: 'Luckiest Guy', cursive; font-size: 26px; letter-spacing: 2px; }
+.nav-links { margin-left: auto; display: flex; gap: 22px; }
+.nav-links a { color: white; text-decoration: none; font-weight: 600; padding: 7px 14px; border-radius: 10px; }
+.nav-links a:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
+.hamburger { display: none; flex-direction: column; gap: 5px; margin-left: auto; cursor: pointer; }
+.hamburger span { width: 28px; height: 3px; background: white; border-radius: 5px; }
+h1 { font-family: 'Luckiest Guy', cursive; font-size: 56px; margin-top: 130px; text-align: center; }
+.wrapper { display: flex; flex-direction: column; align-items: center; gap: 25px; margin-top: 45vh; padding-bottom: 60px; width: 90%; max-width: 900px; }
+.tabs { display:flex; justify-content:center; margin-bottom:15px; flex-wrap:wrap; }
+.tab { padding:10px 20px; cursor:pointer; border-radius:5px; margin:5px; background:#2d1b4f; transition:0.3s; box-shadow:0 0 5px rgba(0,0,0,0.5); }
+.tab.active { background:#a855f7; transform: scale(1.05); }
+.forum-section { display:none; animation:fadeIn 0.5s; width:100%; }
+.forum-section.active { display:block; }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+iframe { width: 100%; height: 650px; border-radius: 12px; border: none; box-shadow: 0 0 15px #a855f7; }
+
+@media (max-width: 900px) { 
+    body { background: linear-gradient(135deg, #5a00c8, #8f3cff); background-attachment: scroll; } 
+    .hamburger { display: flex; } 
+    .nav-title { display: none; } 
+    .nav-links { position: absolute; top: 70px; right: 15px; background: rgba(0,0,0,0.9); flex-direction: column; padding: 15px; border-radius: 14px; display: none; gap: 15px; } 
+    .nav-links.active { display: flex; } 
+    h1 { font-size: 42px; } 
+    .wrapper { margin-top: 40px; } 
+    iframe { height: 500px; } 
+}
+@media (min-width: 901px) { h1 { display: none; } }
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="nav-logo" onclick="location.href='index.html'"><img src="logo.gif" alt="Logo KLIK"></div>
+    <div class="nav-title">KLIK COMMUNITY</div>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <div class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="regole.html">Regole</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="staff.html">Staff</a>
+        <a href="candidature.html">Candidature staff</a>
+        <a href="forum.html">Forum</a>
+    </div>
+</div>
+
+<h1>FORUM</h1>
+
+<div class="wrapper">
+  <div class="tabs">
+    <div class="tab active" data-tab="suggerimenti">💡 Suggerimenti</div>
+    <div class="tab" data-tab="feedback">📝 Feedback</div>
+  </div>
+
+  <div class="forum-section active" id="suggerimenti">
+    <iframe src="https://forms.cloud.microsoft/r/9fyaP3KVHa"></iframe>
+  </div>
+
+  <div class="forum-section" id="feedback">
+    <iframe src="https://forms.cloud.microsoft/r/9PpU4m1s9A"></iframe>
+  </div>
+
+  <!-- Testo informativo sotto i moduli -->
+  <p style="text-align:center; margin-top:20px; font-size:16px; color:#ddd; max-width:800px;">
+    Aiutaci a migliorare il nostro server con un suggerimento o con un feedback.<br>
+    L'inserimento del nome utente Discord non è obbligatorio ma ci aiuta a capire il tuo contributo per la community.
+  </p>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const sections = document.querySelectorAll('.forum-section');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
+</script>
+
+</body>
+</html>
