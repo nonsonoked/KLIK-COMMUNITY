@@ -128,6 +128,15 @@ h1 {
     font-weight: 700;
     border-radius: 12px;
     text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.join-btn:hover {
+    transform: scale(1.06);
 }
 
 .discord-widget {
@@ -220,6 +229,281 @@ h1 {
 @media (min-width: 901px) {
     h1 { display: none; }
 }
+
+/* ===========================
+   🎮 MINI GAMES SECTION
+   =========================== */
+
+.games-section {
+    width: min(920px, 95%);
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.35);
+    border: 2px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+.games-title {
+    font-family: 'Luckiest Guy', cursive;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.games-subtitle {
+    text-align: center;
+    opacity: 0.85;
+    margin: 0 0 16px;
+    font-size: 14px;
+}
+
+.games-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.pill {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.pill:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.18);
+}
+
+.pill.active {
+    background: rgba(168,85,247,0.35);
+    border: 1px solid rgba(168,85,247,0.75);
+}
+
+.time-select {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+}
+
+.game-area {
+    width: 100%;
+    min-height: 360px;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.25);
+    border: 2px solid rgba(255,255,255,0.12);
+    position: relative;
+    overflow: hidden;
+    padding: 14px;
+}
+
+.game-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.stat {
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.14);
+    font-weight: 700;
+}
+
+.start-btn {
+    padding: 12px 18px;
+    border-radius: 14px;
+    border: 0;
+    cursor: pointer;
+    background: white;
+    color: #5a00c8;
+    font-weight: 900;
+}
+
+.start-btn:hover { transform: scale(1.06); }
+
+.center-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+/* Aim target */
+.target {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    position: absolute;
+    cursor: crosshair;
+    border: 3px solid rgba(255,255,255,0.9);
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(168,85,247,0.55), rgba(90,0,200,0.25));
+    box-shadow: 0 0 18px rgba(168,85,247,0.55);
+    animation: popIn 0.18s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.55); opacity: 0.3; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Bump button */
+.bump-wrap {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bump-btn {
+    width: 200px;
+    height: 200px;
+    border-radius: 28px;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+}
+
+.bump-btn:hover {
+    transform: scale(1.04);
+    background: rgba(255,255,255,0.16);
+}
+
+.bump-btn:active {
+    transform: scale(0.96);
+}
+
+/* Glow pulse */
+.bump-btn::before {
+    content: "";
+    position: absolute;
+    inset: -60px;
+    background: radial-gradient(circle, rgba(168,85,247,0.55), transparent 60%);
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.bump-btn.pulse::before {
+    opacity: 1;
+    animation: glowPulse 0.45s ease;
+}
+
+@keyframes glowPulse {
+    0% { transform: scale(0.6); opacity: 0.0; }
+    30% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.25); opacity: 0; }
+}
+
+/* Particles */
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(168,85,247,0.95);
+    pointer-events: none;
+    animation: particleFly 0.55s ease-out forwards;
+}
+
+@keyframes particleFly {
+    from { transform: translate(0,0) scale(1); opacity: 1; }
+    to { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+}
+
+/* Result modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 18px;
+}
+
+.modal.active { display: flex; }
+
+.modal-card {
+    width: min(520px, 95%);
+    background: rgba(15, 0, 35, 0.85);
+    border: 2px solid rgba(255,255,255,0.18);
+    border-radius: 22px;
+    backdrop-filter: blur(14px);
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+    animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+    from { transform: translateY(14px) scale(0.98); opacity: 0.4; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-title {
+    font-family: 'Luckiest Guy', cursive;
+    letter-spacing: 1px;
+    font-size: 34px;
+    margin: 0 0 10px;
+}
+
+.modal-score {
+    font-size: 18px;
+    opacity: 0.95;
+    margin-bottom: 16px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secondary {
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.10);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-secondary:hover { transform: scale(1.05); }
+
 </style>
 </head>
 
@@ -273,6 +557,48 @@ h1 {
     <iframe class="discord-widget"
         src="https://discord.com/widget?id=1329496584987082814&theme=dark">
     </iframe>
+
+    <!-- 🎮 MINI GAMES -->
+    <div class="games-section" id="games">
+        <div class="games-title">MINI GAMES</div>
+        <div class="games-subtitle">
+            Scegli un gioco, imposta il tempo e fai il tuo punteggio 🔥
+        </div>
+
+        <div class="games-controls">
+            <button class="pill active" id="btnAim" onclick="switchGame('aim')">🎯 Aim Trainer</button>
+            <button class="pill" id="btnBump" onclick="switchGame('bump')">🟣 Bump Clicker</button>
+
+            <select class="time-select" id="timeSelect">
+                <option value="10">⏱️ 10s</option>
+                <option value="20">⏱️ 20s</option>
+                <option value="30" selected>⏱️ 30s</option>
+                <option value="60">⏱️ 60s</option>
+            </select>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <div class="game-topbar">
+                <div class="stat" id="statLeft">🎯 Hits: 0</div>
+                <div class="stat" id="statMid">⏳ Tempo: 30s</div>
+                <div class="stat" id="statRight">Miss: 0</div>
+                <button class="start-btn" id="startBtn" onclick="startGame()">START</button>
+            </div>
+
+            <div class="center-hint" id="hint">
+                Seleziona un gioco e premi <b>START</b> 😈
+            </div>
+
+            <!-- Bump area -->
+            <div class="bump-wrap" id="bumpWrap" style="display:none;">
+                <button class="bump-btn" id="bumpBtn" onclick="bumpClick()">
+                    BUMP
+                    <div style="font-size:14px; opacity:0.9; margin-top:6px;">click spam</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div class="community-text">
@@ -281,11 +607,287 @@ h1 {
 
 <div class="version">v2.0 by Ked</div>
 
+<!-- RESULT MODAL -->
+<div class="modal" id="resultModal">
+    <div class="modal-card">
+        <div class="modal-title" id="modalTitle">GG!</div>
+        <div class="modal-score" id="modalScore">Punteggio: 0</div>
+
+        <div class="modal-actions">
+            <button class="btn-secondary" onclick="closeModal()">Chiudi</button>
+
+            <a class="join-btn" href="https://discord.gg/ygxgazMwuf" target="_blank">
+                Entra nel server
+            </a>
+        </div>
+    </div>
+</div>
+
 <script>
 function toggleMenu() {
     document.getElementById("navMenu").classList.toggle("active");
 }
+
+/* ===========================
+   GAME SYSTEM
+   =========================== */
+
+let currentGame = "aim";
+let playing = false;
+let timerInterval = null;
+let timeLeft = 30;
+
+let hits = 0;
+let misses = 0;
+let bumpScore = 0;
+
+const gameArea = document.getElementById("gameArea");
+const hint = document.getElementById("hint");
+const bumpWrap = document.getElementById("bumpWrap");
+const bumpBtn = document.getElementById("bumpBtn");
+
+const statLeft = document.getElementById("statLeft");
+const statMid = document.getElementById("statMid");
+const statRight = document.getElementById("statRight");
+const startBtn = document.getElementById("startBtn");
+
+const btnAim = document.getElementById("btnAim");
+const btnBump = document.getElementById("btnBump");
+const timeSelect = document.getElementById("timeSelect");
+
+/* Modal */
+const resultModal = document.getElementById("resultModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalScore = document.getElementById("modalScore");
+
+function switchGame(game) {
+    if (playing) return;
+
+    currentGame = game;
+
+    btnAim.classList.remove("active");
+    btnBump.classList.remove("active");
+
+    if (game === "aim") {
+        btnAim.classList.add("active");
+        bumpWrap.style.display = "none";
+        hint.innerHTML = "Clicca i bersagli più veloce possibile 🎯<br><b>START</b> quando vuoi!";
+        statLeft.innerText = "🎯 Hits: 0";
+        statRight.innerText = "Miss: 0";
+    } else {
+        btnBump.classList.add("active");
+        bumpWrap.style.display = "flex";
+        hint.innerHTML = "Spamma BUMP e fai più punti possibile 🟣<br><b>START</b> quando vuoi!";
+        statLeft.innerText = "🟣 Bumps: 0";
+        statRight.innerText = "🔥 Combo: 0";
+    }
+
+    timeLeft = parseInt(timeSelect.value);
+    statMid.innerText = `⏳ Tempo: ${timeLeft}s`;
+}
+
+timeSelect.addEventListener("change", () => {
+    if (playing) return;
+    timeLeft = parseInt(timeSelect.value);
+    statMid.innerText = `⏳ Tempo: ${timeLeft}s`;
+});
+
+/* Reset everything */
+function resetStats() {
+    hits = 0;
+    misses = 0;
+    bumpScore = 0;
+
+    if (currentGame === "aim") {
+        statLeft.innerText = "🎯 Hits: 0";
+        statRight.innerText = "Miss: 0";
+    } else {
+        statLeft.innerText = "🟣 Bumps: 0";
+        statRight.innerText = "🔥 Combo: 0";
+    }
+}
+
+function startGame() {
+    if (playing) return;
+
+    playing = true;
+    hint.style.display = "none";
+    startBtn.disabled = true;
+    startBtn.style.opacity = "0.6";
+
+    resetStats();
+
+    timeLeft = parseInt(timeSelect.value);
+    statMid.innerText = `⏳ Tempo: ${timeLeft}s`;
+
+    if (currentGame === "aim") {
+        spawnTarget();
+    } else {
+        bumpBtn.disabled = false;
+    }
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        statMid.innerText = `⏳ Tempo: ${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+            endGame();
+        }
+    }, 1000);
+}
+
+function endGame() {
+    playing = false;
+
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    startBtn.disabled = false;
+    startBtn.style.opacity = "1";
+
+    removeTarget();
+
+    bumpBtn.disabled = true;
+
+    if (currentGame === "aim") {
+        const score = hits;
+        modalTitle.innerText = "🎯 Aim Trainer finito!";
+        modalScore.innerHTML = `Hai colpito <b>${hits}</b> bersagli.<br>Miss: <b>${misses}</b>`;
+    } else {
+        modalTitle.innerText = "🟣 Bump Clicker finito!";
+        modalScore.innerHTML = `Hai fatto <b>${bumpScore}</b> bump! 🔥`;
+    }
+
+    resultModal.classList.add("active");
+}
+
+function closeModal() {
+    resultModal.classList.remove("active");
+    hint.style.display = "flex";
+}
+
+/* ===========================
+   AIM TRAINER
+   =========================== */
+
+let currentTarget = null;
+
+function spawnTarget() {
+    if (!playing || currentGame !== "aim") return;
+
+    removeTarget();
+
+    const rect = gameArea.getBoundingClientRect();
+
+    // topbar height approx
+    const topOffset = 75;
+
+    const size = 54;
+
+    const maxX = rect.width - size - 20;
+    const maxY = rect.height - size - 20;
+
+    // keep away from topbar
+    const x = Math.random() * maxX;
+    const y = topOffset + Math.random() * (maxY - topOffset);
+
+    const target = document.createElement("div");
+    target.className = "target";
+    target.style.left = `${x}px`;
+    target.style.top = `${y}px`;
+
+    target.onclick = (e) => {
+        e.stopPropagation();
+        hits++;
+        statLeft.innerText = `🎯 Hits: ${hits}`;
+        spawnTarget();
+    };
+
+    currentTarget = target;
+    gameArea.appendChild(target);
+}
+
+/* Clicking empty area = miss */
+gameArea.addEventListener("click", () => {
+    if (!playing) return;
+    if (currentGame !== "aim") return;
+
+    misses++;
+    statRight.innerText = `Miss: ${misses}`;
+});
+
+function removeTarget() {
+    if (currentTarget) {
+        currentTarget.remove();
+        currentTarget = null;
+    }
+}
+
+/* ===========================
+   BUMP CLICKER
+   =========================== */
+
+let combo = 0;
+let lastClickTime = 0;
+
+function bumpClick() {
+    if (!playing || currentGame !== "bump") return;
+
+    const now = Date.now();
+    if (now - lastClickTime < 600) {
+        combo++;
+    } else {
+        combo = 1;
+    }
+    lastClickTime = now;
+
+    bumpScore++;
+    statLeft.innerText = `🟣 Bumps: ${bumpScore}`;
+    statRight.innerText = `🔥 Combo: ${combo}`;
+
+    // Pulse animation
+    bumpBtn.classList.remove("pulse");
+    void bumpBtn.offsetWidth;
+    bumpBtn.classList.add("pulse");
+
+    // Particles
+    spawnParticles();
+}
+
+function spawnParticles() {
+    const rect = bumpBtn.getBoundingClientRect();
+
+    // center of bump button relative to viewport
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    for (let i = 0; i < 10; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+
+        // random direction
+        const dx = (Math.random() * 220 - 110) + "px";
+        const dy = (Math.random() * 220 - 110) + "px";
+        p.style.setProperty("--dx", dx);
+        p.style.setProperty("--dy", dy);
+
+        // spawn at center
+        p.style.left = cx + "px";
+        p.style.top = cy + "px";
+        p.style.position = "fixed";
+
+        document.body.appendChild(p);
+
+        setTimeout(() => {
+            p.remove();
+        }, 600);
+    }
+}
+
+/* Init */
+switchGame("aim");
 </script>
+
 <!-- FOOTER -->
 <footer style="width:100%; background:#111; color:white; padding:25px 20px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:15px; box-shadow: 0 -3px 10px rgba(0,0,0,0.5);">
   
@@ -324,6 +926,3 @@ function toggleMenu() {
 
 </body>
 </html>
-
-
-
