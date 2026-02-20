@@ -1,299 +1,156 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Regole - KLIK COMMUNITY</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>KLIK COMMUNITY | Regolamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #a855f7;
+            --accent: #d946ef;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="logo.png">
+        * { box-sizing: border-box; transition: all 0.3s ease; }
 
-<style>
-* { box-sizing: border-box; transition: 0.3s ease; }
+        body {
+            margin: 0; font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #1a0033 0%, #05000a 100%);
+            color: white; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+        }
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            animation: fadeIn 0.4s ease forwards;
+        }
 
-    /* SFONDO DESKTOP REGOLE */
-    background:
-        linear-gradient(rgba(20,0,40,0.7), rgba(20,0,40,0.7)),
-        url("sfondo_regole.png");
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    background-size: cover;
-    background-position: center top;
-    background-attachment: fixed;
-    color: white;
-}
+        .card { 
+            background: var(--glass); 
+            border: 1px solid var(--glass-border); 
+            border-radius: 25px; 
+            padding: 35px; 
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
 
-/* NAVBAR */
-.navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    padding: 14px 25px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-}
+        .rule-card { 
+            background: rgba(255,255,255,0.04); 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid var(--primary); 
+        }
 
-.nav-logo img {
-    height: 52px;
-    border-radius: 8px;
-    cursor: pointer;
-}
+        .rule-card h3 { 
+            margin: 0 0 8px 0; 
+            color: #ffd6ff; 
+            font-size: 19px; 
+            font-weight: 700;
+        }
 
-.nav-title {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 26px;
-    letter-spacing: 2px;
-}
+        .rule-card p { 
+            margin: 4px 0; 
+            font-size: 15px; 
+            opacity: 0.9; 
+            line-height: 1.6;
+        }
 
-.nav-links {
-    margin-left: auto;
-    display: flex;
-    gap: 22px;
-}
+        .back-btn {
+            display: inline-block;
+            cursor: pointer; 
+            color: var(--primary); 
+            margin-bottom: 20px; 
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 10px;
-}
+        .back-btn:hover {
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
 
-.nav-links a:hover {
-    background: rgba(255,255,255,0.2);
-    transform: scale(1.05);
-}
+        h1 {
+            font-family: 'Luckiest Guy';
+            font-size: clamp(28px, 5vw, 42px);
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    margin-left: auto;
-    cursor: pointer;
-}
-
-.hamburger span {
-    width: 28px;
-    height: 3px;
-    background: white;
-    border-radius: 5px;
-}
-
-/* TITOLO */
-.page-title {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 60px;
-    text-align: center;
-    margin-top: 150px;
-    margin-bottom: 25px;
-}
-
-/* CONTENUTO */
-.rules-wrapper {
-    max-width: 900px;
-    margin: 0 auto 80px;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* CARD REGOLA */
-.rule-card {
-    background: rgba(255,255,255,0.12);
-    border-radius: 22px;
-    padding: 28px 26px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    backdrop-filter: blur(10px);
-    transform: translateY(30px);
-    opacity: 0;
-    animation: fadeUp 0.8s forwards;
-}
-
-.rule-card:nth-child(1){animation-delay:0.1s}
-.rule-card:nth-child(2){animation-delay:0.2s}
-.rule-card:nth-child(3){animation-delay:0.3s}
-.rule-card:nth-child(4){animation-delay:0.4s}
-.rule-card:nth-child(5){animation-delay:0.5s}
-.rule-card:nth-child(6){animation-delay:0.6s}
-.rule-card:nth-child(7){animation-delay:0.7s}
-
-.rule-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 0 30px rgba(160,90,255,0.6);
-}
-
-.rule-card h2 {
-    margin-top: 0;
-    font-size: 22px;
-    color: #ffd6ff;
-}
-
-/* FOOTER */
-.version {
-    text-align: center;
-    margin-bottom: 30px;
-    opacity: 0.6;
-}
-
-/* ANIMAZIONE */
-@keyframes fadeUp {
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-    body {
-        background: linear-gradient(135deg, #5a00c8, #8f3cff);
-        background-attachment: scroll;
-    }
-
-    .hamburger { display: flex; }
-    .nav-title { display: none; }
-
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 15px;
-        background: rgba(0,0,0,0.9);
-        flex-direction: column;
-        padding: 15px;
-        border-radius: 14px;
-        display: none;
-        gap: 15px;
-    }
-
-    .nav-links.active { display: flex; }
-
-    .page-title { font-size: 42px; }
-}
-</style>
+        footer {
+            margin-top: auto;
+            padding: 30px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 12px;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <div class="nav-logo" onclick="location.href='index.html'">
-        <img src="logo.gif">
+    <div class="container">
+        <a href="index.html" class="back-btn">← Torna all'Hub</a>
+
+        <div class="card">
+            <h1>📜 Regolamento Ufficiale</h1>
+            
+            <div class="rule-card">
+                <h3>1) Linguaggio appropriato</h3>
+                <p>Ogni tipo di offesa, minaccia o discriminazione non è tollerato.</p>
+                <p>Invitiamo a silenziare clip contenenti insulti o minacce prima della condivisione.</p>
+            </div>
+
+            <div class="rule-card">
+                <h3>2) Comportamenti inappropriati</h3>
+                <p>Trolling e disturbo mirato verso altri utenti saranno puniti.</p>
+                <p>Vietato contattare i membri in privato per spam, molestie o offerte non richieste.</p>
+            </div>
+
+            <div class="rule-card">
+                <h3>3) Contenuti inappropriati</h3>
+                <p>Vietato inviare materiale pornografico, pedopornografico o estremamente disturbante (gore).</p>
+                <p>Clip violente di videogiochi sono consentite solo con il tag SPOILER.</p>
+                <p>È severamente vietato l'invio di file o link dannosi, malware o eseguibili sospetti.</p>
+                <p>Nickname e foto profilo devono essere consoni e non offensivi.</p>
+            </div>
+
+            <div class="rule-card">
+                <h3>4) Informazioni personali (Doxing)</h3>
+                <p>È vietato diffondere dati personali propri o altrui senza esplicito consenso.</p>
+                <p>La violazione della privacy altrui comporta l'espulsione immediata e permanente.</p>
+            </div>
+
+            <div class="rule-card">
+                <h3>5) Spam e Pubblicità</h3>
+                <p>Lo spam è consentito esclusivamente ai Content Creator certificati nei canali dedicati.</p>
+                <p>Ogni altro tipo di spam (link esterni, inviti ad altri server Discord) senza autorizzazione sarà punito.</p>
+            </div>
+
+            <div class="rule-card">
+                <h3>6) Contenuti illegali</h3>
+                <p>Vietato inviare o richiedere software piratato, crack, strumenti di hacking o guide a contenuti illegali.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="nav-title">KLIK COMMUNITY</div>
-
-    <div class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-    </div>
-
-    <div class="nav-links" id="navMenu">
-        <a href="index.html">Home</a>
-        <a href="regole.html">Regole</a>
-        <a href="chi-siamo.html">Chi siamo</a>
-        <a href="staff.html">Staff</a>
-        <a href="candidature.html">Candidature</a>
-        <a href="forum.html">Forum</a>
-    </div>
-</div>
-
-<h1 class="page-title">📜 Regolamento</h1>
-
-<div class="rules-wrapper">
-
-<div class="rule-card">
-<h2>1) Linguaggio appropriato</h2>
-<p>Ogni tipo di offesa, minaccia o discriminazione non è tollerato.</p>
-<p>Invitiamo a silenziare clip contenenti insulti o minacce.</p>
-</div>
-
-<div class="rule-card">
-<h2>2) Comportamenti inappropriati</h2>
-<p>Trolling e disturbo verso altri utenti saranno puniti.</p>
-<p>Vietato contattare in privato per spam o molestie.</p>
-</div>
-
-<div class="rule-card">
-<h2>3) Contenuti inappropriati</h2>
-<p>Vietato inviare materiale pornografico o disturbante.</p>
-<p>Clip violente consentite solo con spoiler.</p>
-<p>Vietati file o link dannosi.</p>
-<p>Nickname e foto profilo devono essere appropriati.</p>
-</div>
-
-<div class="rule-card">
-<h2>4) Informazioni personali</h2>
-<p>È vietato diffondere dati personali senza consenso.</p>
-<p>In assenza di prova, l’utente sarà punito.</p>
-</div>
-
-<div class="rule-card">
-<h2>5) Spam</h2>
-<p>Consentito solo ai Content Creator nei canali dedicati.</p>
-<p>Ogni altro spam sarà punito.</p>
-</div>
-
-<div class="rule-card">
-<h2>6) Contenuti illegali</h2>
-<p>Vietato inviare software piratato, hacking o contenuti illegali.</p>
-</div>
-
-<div class="rule-card">
-<p><strong>Invitiamo tutti a rispettare il regolamento.</strong><br>
-Se non sei disposto a farlo, esci dal server. Grazie.</p>
-</div>
-
-</div>
-
-<div class="version">v2.0 by Ked</div>
-
-<script>
-function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("active");
-}
-</script>
-<!-- FOOTER -->
-<footer style="width:100%; background:#111; color:white; padding:25px 20px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:15px; box-shadow: 0 -3px 10px rgba(0,0,0,0.5);">
-  
-  <!-- Contatti -->
-  <div style="flex:1; min-width:200px;">
-    <h3 style="margin:0 0 10px 0; font-size:18px;">Contatti</h3>
-    <p style="margin:3px 0;">Email: <a href="mailto:klik-community@outlook.it" style="color:#a855f7; text-decoration:none;">klik-community@outlook.it</a></p>
-    <p style="margin:3px 0;">Discord: <a href="https://discord.gg/ygxgazMwuf" target="_blank" style="color:#a855f7; text-decoration:none;">Unisciti al server</a></p>
-  </div>
-
-  <!-- Link utili -->
-  <div style="flex:1; min-width:200px;">
-    <h3 style="margin:0 0 10px 0; font-size:18px;">Link utili</h3>
-    <p style="margin:3px 0;"><a href="index.html" style="color:#a855f7; text-decoration:none;">Home</a></p>
-    <p style="margin:3px 0;"><a href="regole.html" style="color:#a855f7; text-decoration:none;">Regole</a></p>
-    <p style="margin:3px 0;"><a href="chi-siamo.html" style="color:#a855f7; text-decoration:none;">Chi siamo</a></p>
-    <p style="margin:3px 0;"><a href="staff.html" style="color:#a855f7; text-decoration:none;">Staff</a></p>
-    <p style="margin:3px 0;"><a href="candidature.html" style="color:#a855f7; text-decoration:none;">Candidature</a></p>
-    <p style="margin:3px 0;"><a href="forum.html" style="color:#a855f7; text-decoration:none;">Forum</a></p>
-  </div>
-
-  <!-- Credits -->
-  <div style="flex:1; min-width:200px; text-align:right;">
-    <p style="margin:0; font-size:14px;">2026 KLIK COMMUNITY</p>
-  </div>
-
-</footer>
-
-<!-- FOOTER RESPONSIVE -->
-<style>
-@media(max-width:900px) {
-  footer { flex-direction:column; text-align:center; align-items:center; }
-  footer div { text-align:center; }
-}
-</style>
+    <footer>
+        KLIK COMMUNITY &copy; 2024 - Regolamento Ufficiale v3.0
+    </footer>
 
 </body>
 </html>
