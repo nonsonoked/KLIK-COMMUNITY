@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>KLIK COMMUNITY | Sala Giochi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo_sito.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #a855f7;
+            --accent: #d946ef;
+            --success: #34d399;
+            --danger: #ff4b4b;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0; font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #1a0033 0%, #05000a 100%);
+            color: white; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+        }
+
+        .container { width: 100%; max-width: 900px; padding: 40px 20px; text-align: center; }
+
+        .back-link { color: var(--primary); text-decoration: none; font-weight: 800; margin-bottom: 20px; display: inline-block; transition: 0.3s; }
+        .back-link:hover { color: var(--accent); transform: translateX(-5px); }
+
+        /* --- TABS --- */
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab-btn { 
+            padding: 12px 25px; background: var(--glass); border: 1px solid var(--glass-border); 
+            border-radius: 15px; color: white; cursor: pointer; font-weight: 700; transition: 0.3s;
+        }
+        .tab-btn.active { background: var(--primary); border-color: var(--accent); box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+
+        .game-section { display: none; }
+        .game-section.active { display: block; animation: fadeIn 0.3s ease forwards; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .game-card {
+            background: var(--glass); border: 1px solid var(--glass-border); 
+            border-radius: 30px; padding: 30px; backdrop-filter: blur(15px); position: relative;
+        }
+
+        canvas { background: rgba(0,0,0,0.4); border-radius: 20px; border: 1px solid var(--glass-border); max-width: 100%; cursor: default; }
+
+        .btn-start {
+            padding: 15px 35px; background: var(--primary); color: white; border: none;
+            border-radius: 15px; font-family: 'Luckiest Guy'; font-size: 22px; cursor: pointer; margin-top: 15px;
+        }
+        
+        .stats { display: flex; justify-content: space-around; font-weight: 800; font-size: 20px; color: var(--accent); margin-bottom: 15px; align-items: center; }
+
+        .custom-select {
+            background: #333; border: 1px solid var(--glass-border); color: white;
+            padding: 5px 10px; border-radius: 8px; cursor: pointer;
+        }
+
+        #reaction-area {
+            width: 100%; height: 300px; border-radius: 20px; display: flex; align-items: center; 
+            justify-content: center; cursor: pointer; font-weight: 800; font-size: 28px; transition: 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← TORNA ALL'HUB</a>
+        <h1 style="font-family:'Luckiest Guy'; font-size: 48px; margin-bottom: 30px;">KLIK GAMES</h1>
+
+        <div class="tabs">
+            <button id="btn-aim" class="tab-btn active" onclick="openGame('aim')">🎯 Aim Trainer</button>
+            <button id="btn-jump" class="tab-btn" onclick="openGame('jump')">🚀 Klik Jump</button>
+            <button id="btn-reaction" class="tab-btn" onclick="openGame('reaction')">⚡ Reaction Test</button>
+        </div>
+
+        <div id="aim" class="game-section active">
+            <div class="game-card">
+                <div class="stats">
+                    <div>SCORE: <span id="aim-score">0</span></div>
+                    <div>TIME: 
+                        <select id="aim-duration" class="custom-select">
+                            <option value="15">15s</option>
+                            <option value="30" selected>30s</option>
+                            <option value="60">60s</option>
+                        </select>
+                        <span id="aim-timer-display" style="display:none;"><span id="aim-timer">30</span>s</span>
+                    </div>
+                </div>
+                <div id="aim-canvas-area" style="position:relative; height:400px; background:rgba(0,0,0,0.3); border-radius:20px; overflow:hidden; border:1px solid var(--glass-border); cursor:crosshair;">
+                    <div id="aim-start" style="position:absolute; inset:0; background:rgba(0,0,0,0.8); z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <button class="btn-start" onclick="startAim()">START</button>
+                    </div>
+                    <div id="target" style="width:50px; height:50px; background:radial-gradient(circle, #fff, var(--primary)); border-radius:50%; position:absolute; display:none; box-shadow:0 0 20px var(--primary);"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="jump" class="game-section">
+            <div class="game-card">
+                <div class="stats">SCORE: <span id="jump-score">0</span></div>
+                <canvas id="jumpCanvas" width="400" height="500"></canvas>
+                <div id="jump-ui" style="margin-top:10px;"><button class="btn-start" onclick="startJump()">PLAY JUMP</button></div>
+            </div>
+        </div>
+
+        <div id="reaction" class="game-section">
+            <div class="game-card">
+                <div id="reaction-area" style="background: var(--primary);" onclick="handleReaction()">
+                    CLICCA PER INIZIARE
+                </div>
+                <div id="reaction-result" style="margin-top:20px; font-size:24px; font-weight:800; color:var(--success);"></div>
+            </div>
+        </div>
+    </div>
+
+    <img src="logo.png" id="playerLogo" style="display:none;">
+
+    <script>
+        // FUNZIONE CAMBIO GIOCO (FIXATA)
+        function openGame(gameId) {
+            // Nascondi tutte le sezioni
+            document.querySelectorAll('.game-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Rimuovi active dai bottoni
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostra quella selezionata
+            document.getElementById(gameId).classList.add('active');
+            document.getElementById('btn-' + gameId).classList.add('active');
+            
+            // Ferma eventuali giochi in corso
+            jActive = false;
+            aimActive = false;
+        }
+
+        /* --- AIM TRAINER --- */
+        let aimScore = 0, aimTime = 30, aimActive = false;
+        const target = document.getElementById('target');
+        const durationSelect = document.getElementById('aim-duration');
+
+        function startAim() {
+            aimScore = 0; 
+            aimTime = parseInt(durationSelect.value);
+            aimActive = true;
+            document.getElementById('aim-score').innerText = "0";
+            document.getElementById('aim-timer').innerText = aimTime;
+            durationSelect.style.display = 'none';
+            document.getElementById('aim-timer-display').style.display = 'inline';
+            document.getElementById('aim-start').style.display = 'none';
+            target.style.display = 'block';
+            moveTarget();
+            const int = setInterval(() => {
+                if(!aimActive) { clearInterval(int); return; }
+                aimTime--;
+                document.getElementById('aim-timer').innerText = aimTime;
+                if(aimTime <= 0) { clearInterval(int); endAim(); }
+            }, 1000);
+        }
+        function moveTarget() {
+            const area = document.getElementById('aim-canvas-area');
+            target.style.left = Math.random() * (area.clientWidth - 50) + "px";
+            target.style.top = Math.random() * (area.clientHeight - 50) + "px";
+        }
+        target.onclick = () => { if(aimActive) { aimScore++; document.getElementById('aim-score').innerText = aimScore; moveTarget(); } };
+        function endAim() {
+            aimActive = false; target.style.display = 'none';
+            durationSelect.style.display = 'inline';
+            document.getElementById('aim-timer-display').style.display = 'none';
+            document.getElementById('aim-start').style.display = 'flex';
+            document.getElementById('aim-start').innerHTML = `<h2>FINITO!</h2><p>Punti: ${aimScore}</p><button class="btn-start" onclick="startAim()">RIPROVA</button>`;
+        }
+
+        /* --- KLIK JUMP --- */
+        const jCanvas = document.getElementById('jumpCanvas');
+        const jCtx = jCanvas.getContext('2d');
+        const logoImg = document.getElementById('playerLogo');
+        let player, platforms, jScore, jInt, jActive = false;
+        let keys = {};
+
+        window.addEventListener('keydown', e => keys[e.code] = true);
+        window.addEventListener('keyup', e => keys[e.code] = false);
+
+        function startJump() {
+            jActive = true; jScore = 0;
+            document.getElementById('jump-ui').style.display = 'none';
+            player = { x: 180, y: 350, w: 40, h: 40, vy: 0 }; 
+            platforms = [{ x: 150, y: 430, w: 100, h: 12 }]; // Prima piattaforma fissa
+            for(let i=1; i<6; i++) platforms.push({ x: Math.random()*300, y: 430 - (i*95), w: 75, h: 12 });
+            updateJump();
+        }
+
+        function updateJump() {
+            if(!jActive) return;
+            jCtx.clearRect(0,0,400,500);
+            player.vy += 0.25; player.y += player.vy;
+            if(keys['ArrowLeft'] || keys['KeyA']) player.x -= 5;
+            if(keys['ArrowRight'] || keys['KeyD']) player.x += 5;
+            if(player.x < -20) player.x = 400; if(player.x > 400) player.x = -20;
+
+            // Disegna player (logo o quadrato)
+            if(logoImg.complete && logoImg.naturalWidth !== 0) {
+                jCtx.drawImage(logoImg, player.x, player.y, player.w, player.h);
+            } else {
+                jCtx.fillStyle = "#a855f7";
+                jCtx.fillRect(player.x, player.y, player.w, player.h);
+            }
+
+            platforms.forEach(p => {
+                jCtx.fillStyle = "white";
+                jCtx.fillRect(p.x, p.y, p.w, p.h);
+                if(player.vy > 0 && player.x + 30 > p.x && player.x < p.x + p.w && player.y + 40 > p.y && player.y + 40 < p.y + 15) {
+                    player.vy = -9;
+                }
+            });
+
+            if(player.y < 200) {
+                let diff = 200 - player.y; player.y = 200;
+                platforms.forEach(p => {
+                    p.y += diff;
+                    if(p.y > 500) { p.y = 0; p.x = Math.random()*320; jScore += 10; }
+                });
+            }
+            document.getElementById('jump-score').innerText = jScore;
+            if(player.y > 550) { 
+                jActive = false; 
+                document.getElementById('jump-ui').style.display = 'block';
+                document.getElementById('jump-ui').innerHTML = `<h2>GAME OVER</h2><p>Score: ${jScore}</p><button class="btn-start" onclick="startJump()">RIPROVA</button>`;
+            } else {
+                requestAnimationFrame(updateJump);
+            }
+        }
+
+        /* --- REACTION TEST --- */
+        let rState = "idle", rStart, rTimeout;
+        const rArea = document.getElementById('reaction-area');
+        function handleReaction() {
+            if(rState === "idle" || rState === "end") {
+                rState = "waiting"; rArea.style.background = "var(--danger)"; rArea.innerText = "ATTENDI IL VERDE...";
+                document.getElementById('reaction-result').innerText = "";
+                rTimeout = setTimeout(() => {
+                    rState = "go"; rArea.style.background = "var(--success)"; rArea.innerText = "CLICCA ORA!"; rStart = Date.now();
+                }, Math.random() * 3000 + 2000);
+            } else if(rState === "waiting") {
+                clearTimeout(rTimeout); rState = "idle"; rArea.style.background = "var(--primary)"; rArea.innerText = "TROPPO PRESTO!";
+            } else if(rState === "go") {
+                let ms = Date.now() - rStart; rState = "end"; rArea.style.background = "var(--primary)";
+                rArea.innerText = "CLICCA PER RIPROVARE";
+                document.getElementById('reaction-result').innerText = ms + "ms";
+            }
+        }
+    </script>
+</body>
+</html>
