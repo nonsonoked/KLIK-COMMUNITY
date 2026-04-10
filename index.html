@@ -2,72 +2,108 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>KLIK COMMUNITY | Hub</title>
+    <title>KLIK COMMUNITY | Hub V4.4</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Luckiest+Guy&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary: #a855f7;
             --accent: #d946ef;
-            --glass: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --online: #00ff88;
+            --bg: #05000a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
         }
 
-        * { box-sizing: border-box; transition: all 0.3s ease; }
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 
         body {
-            margin: 0; font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at center, #1a0033 0%, #05000a 100%);
-            color: white; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+            margin: 0; font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg); color: white; min-height: 100vh;
+            display: flex; flex-direction: column; overflow-x: hidden;
         }
 
-        /* --- NAVIGAZIONE --- */
-        .page-section { display: none; width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; animation: fadeIn 0.4s ease forwards; }
+        /* SFONDO ANIMATO */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(217, 70, 239, 0.12) 0%, transparent 40%);
+            z-index: -1; animation: bgMove 8s infinite alternate;
+        }
+        @keyframes bgMove { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+        /* --- LAYOUT --- */
+        .page-section { display: none; width: 100%; max-width: 1100px; margin: 40px auto; padding: 0 20px; animation: slideUp 0.5s ease forwards; }
         .page-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- HOME GRID --- */
-        .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-        .hero-left { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .main-logo-box { width: 220px; height: 220px; background: var(--glass); border-radius: 40px; border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .main-logo-box img { width: 100%; height: 100%; object-fit: contain; border-radius: 15px; }
-        .join-btn { width: 100%; max-width: 300px; padding: 15px; background: linear-gradient(45deg, var(--primary), var(--accent)); color: white; font-weight: 800; border-radius: 15px; text-decoration: none; text-align: center; box-shadow: 0 10px 25px rgba(168,85,247,0.3); }
+        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 30px; padding: 40px; backdrop-filter: blur(20px); }
 
-        .nav-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 20px 0; }
-        .btn-nav { padding: 15px 5px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; color: white; cursor: pointer; font-weight: 700; text-align: center; font-size: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; }
-        .btn-nav:hover { background: var(--primary); transform: translateY(-3px); }
+        /* --- HOME HERO --- */
+        .main-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        .hero-left { text-align: left; }
+        .hero-title { font-family: 'Luckiest Guy'; font-size: 60px; margin: 10px 0; line-height: 1; }
+        
+        .online-status {
+            background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 8px 16px; border-radius: 50px; font-size: 12px; font-weight: 800;
+            display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px;
+        }
+        .status-dot { width: 8px; height: 8px; background: var(--online); border-radius: 50%; box-shadow: 0 0 10px var(--online); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        /* --- CARDS & REGOLE --- */
-        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 25px; padding: 35px; backdrop-filter: blur(15px); }
-        .rule-card { background: rgba(255,255,255,0.04); padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid var(--primary); }
-        .rule-card h3 { margin: 0 0 8px 0; color: #ffd6ff; font-size: 19px; }
-        .rule-card p { margin: 4px 0; font-size: 15px; opacity: 0.9; }
+        .join-btn { 
+            display: inline-block; padding: 15px 35px; background: white; color: black; 
+            font-weight: 800; border-radius: 50px; text-decoration: none; margin-top: 20px;
+        }
+        .join-btn:hover { background: var(--primary); color: white; transform: translateY(-3px); }
 
-        /* --- POPUP MODAL --- */
-        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
-        .modal-content { background: #1a0033; border: 2px solid var(--primary); padding: 30px; border-radius: 30px; max-width: 500px; width: 90%; text-align: center; position: relative; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 25px; cursor: pointer; color: var(--primary); }
-        .modal-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 15px; object-fit: cover; }
+        /* PROSPETTIVA WIDGET (Solo Desktop) */
+        .widget-container { perspective: 1000px; }
+        .discord-widget {
+            height: 480px; width: 100%; border-radius: 25px; border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: rotateY(-10deg) rotateX(5deg);
+        }
+
+        /* --- MENU --- */
+        .nav-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
+        .btn-nav { 
+            padding: 18px; background: var(--glass); border: 1px solid var(--glass-border); 
+            border-radius: 15px; color: white; cursor: pointer; font-weight: 700; text-align: center; font-size: 14px;
+        }
+        .btn-nav:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-3px); }
 
         /* --- STAFF GRID --- */
-        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 20px; }
+        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 25px; }
         .staff-card { background: var(--glass); padding: 25px; border-radius: 20px; text-align: center; cursor: pointer; border: 1px solid var(--glass-border); }
-        .staff-card:hover { border-color: var(--primary); background: rgba(255,255,255,0.12); transform: scale(1.05); }
-        .staff-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; border: 2px solid var(--primary); }
+        .staff-card img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary); margin-bottom: 10px; }
+        .staff-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+        /* --- REGOLE --- */
+        .rule-card { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid var(--primary); cursor: pointer; }
+        .rule-card:hover { background: rgba(168, 85, 247, 0.1); transform: translateX(10px); }
+        .rule-card p { opacity: 0.7; font-size: 14px; margin-top: 5px; }
+
+        /* --- MODAL --- */
+        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+        .modal-content { background: #120024; border: 2px solid var(--primary); padding: 40px; border-radius: 30px; max-width: 500px; width: 90%; text-align: center; position: relative; }
 
         /* --- FOOTER --- */
-        footer { background: #0a0015; padding: 40px 20px; border-top: 1px solid var(--glass-border); margin-top: auto; }
-        .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
-        .footer-col h4 { margin-bottom: 15px; color: var(--primary); font-family: 'Luckiest Guy'; }
-        .footer-col a, .footer-col span { color: #ccc; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px; cursor: pointer; }
-        .footer-col a:hover { color: var(--primary); }
+        footer { background: rgba(0,0,0,0.6); padding: 60px 20px; border-top: 1px solid var(--glass-border); margin-top: auto; backdrop-filter: blur(10px); }
+        .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; }
+        .footer-col h4 { color: var(--primary); font-family: 'Luckiest Guy'; margin-bottom: 20px; }
+        .footer-col a, .footer-col span { display: block; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 12px; font-size: 14px; cursor: pointer; }
 
         @media (max-width: 900px) {
-            .main-grid, .footer-grid { grid-template-columns: 1fr; }
+            .main-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-left { display: flex; flex-direction: column; align-items: center; }
+            .hero-title { font-size: 45px; }
+            .discord-widget { transform: none !important; }
             .nav-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
         }
     </style>
 </head>
@@ -75,32 +111,35 @@
 
     <div id="infoModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <img id="modalImg" class="modal-img" src="">
-            <h2 id="modalName" style="font-family:'Luckiest Guy'; margin: 10px 0;"></h2>
-            <p id="modalRole" style="color: var(--primary); font-weight: 800; text-transform: uppercase;"></p>
-            <hr id="modalHr" style="border: 0; border-top: 1px solid var(--glass-border); margin: 15px 0;">
-            <div id="modalDesc" style="font-size: 15px; line-height: 1.6; opacity: 0.9;"></div>
+            <span style="position:absolute; top:20px; right:25px; cursor:pointer; font-size:28px; color:var(--primary);" onclick="closeModal()">&times;</span>
+            <img id="modalImg" style="width:90px; height:90px; border-radius:50%; border:3px solid var(--primary); margin-bottom:15px;" src="">
+            <h2 id="modalName" style="font-family:'Luckiest Guy';"></h2>
+            <p id="modalRole" style="color:var(--primary); font-weight:800; text-transform:uppercase; margin-bottom:20px; font-size:14px;"></p>
+            <div id="modalDesc" style="opacity:0.9; line-height:1.6; text-align: left;"></div>
         </div>
     </div>
 
     <section id="home" class="page-section active">
         <div class="main-grid">
             <div class="hero-left">
-                <div class="main-logo-box"><img src="logo.png"></div>
-                <h1 style="font-family:'Luckiest Guy'; font-size:42px; margin:0;">KLIK COMMUNITY</h1>
-                <a href="https://discord.gg/ygxgazMwuf" target="_blank" class="join-btn">UNISCITI AL DISCORD</a>
+                <div class="online-status">
+                    <span class="status-dot"></span> <span id="discord-count">...</span> ONLINE
+                </div>
+                <div style="width:100px; height:100px; background:var(--glass); border-radius:25px; padding:15px; margin-bottom:15px; border:1px solid var(--glass-border);">
+                    <img src="logo.png" style="width:100%;">
+                </div>
+                <h1 class="hero-title">KLIK<br>COMMUNITY</h1>
+                <p style="opacity:0.6; font-size:18px;">Hub ufficiale V4.4 - Tutto ciò che serve alla community.</p>
+                <a href="https://discord.gg/MVAwwjveWZ" target="_blank" class="join-btn">ENTRA NEL DISCORD</a>
             </div>
-            <div style="display:flex; justify-content:center;">
-                <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark" style="height:480px; width:100%; max-width:400px; border-radius:30px; background: transparent; border:none;"></iframe>
+            <div class="widget-container">
+                <iframe src="https://discord.com/widget?id=1329496584987082814&theme=dark" class="discord-widget"></iframe>
             </div>
-
             <div class="nav-grid">
-                <a href="games.html" class="btn-nav">🎮 Minigames</a>
-                <div class="btn-nav" onclick="showPage('regole')">📜 Regole</div>
-                <div class="btn-nav" onclick="showPage('staff')">🛡️ Staff</div>
-                <div class="btn-nav" onclick="showPage('forum')">❓ Forum</div>
-                <div class="btn-nav" onclick="showPage('candidature')">📝 Candidature</div>
+                <div class="btn-nav" onclick="showPage('regole')">📜 REGOLE</div>
+                <div class="btn-nav" onclick="showPage('staff')">🛡️ STAFF</div>
+                <div class="btn-nav" onclick="showPage('forum')">❓ FORUM</div>
+                <div class="btn-nav" onclick="showPage('candidature')">📝 CANDIDATURE</div>
             </div>
         </div>
     </section>
@@ -108,31 +147,36 @@
     <section id="regole" class="page-section">
         <div class="card">
             <div onclick="showPage('home')" style="cursor:pointer; color:var(--primary); margin-bottom:20px; font-weight:800;">← TORNA ALLA HOME</div>
-            <h1 style="font-family:'Luckiest Guy'; font-size:38px;">📜 Regolamento Ufficiale</h1>
+            <h1 style="font-family:'Luckiest Guy'; font-size:40px; margin-bottom: 30px;">📜 REGOLAMENTO</h1>
             
-            <div class="rule-card">
-                <h3>1) Linguaggio appropriato</h3>
-                <p>Ogni tipo di offesa, minaccia o discriminazione non è tollerato. Invitiamo a silenziare clip contenenti insulti.</p>
+            <div class="rule-card" onclick="openRuleModal('Linguaggio', 'Rispetto totale: niente offese, discriminazioni o bestemmie pesanti.', 'Il rispetto è alla base della KLIK Community. È vietato ogni tipo di insulto, linguaggio d\'odio, razzismo o omofobia. Invitiamo a mantenere un tono civile sia nelle chat testuali che nei canali vocali.')">
+                <h3>1) Linguaggio</h3>
+                <p>Rispetto totale: niente offese, discriminazioni o bestemmie pesanti.</p>
             </div>
-            <div class="rule-card">
-                <h3>2) Comportamenti inappropriati</h3>
-                <p>Trolling e disturbo verso altri utenti saranno puniti. Vietato contattare in privato per spam o molestie.</p>
+
+            <div class="rule-card" onclick="openRuleModal('Comportamento', 'No trolling, molestie o disturbo agli altri utenti.', 'Il trolling e il disturbo intenzionale sono sanzionabili. È vietato infastidire gli utenti nei canali vocali con rumori molesti o contattarli nei DM privati per scopi molesti.')">
+                <h3>2) Comportamento</h3>
+                <p>No trolling, molestie o disturbo agli altri utenti.</p>
             </div>
-            <div class="rule-card">
-                <h3>3) Contenuti inappropriati</h3>
-                <p>Vietato inviare materiale pornografico o disturbante. Nickname e foto profilo devono essere consoni.</p>
+
+            <div class="rule-card" onclick="openRuleModal('Contenuti', 'Divieto assoluto di materiale NSFW o illegale.', 'Non è ammesso alcun tipo di contenuto pornografico, violento o disturbante (NSFW/Gore). La sicurezza dei membri, specialmente dei più giovani, è prioritaria.')">
+                <h3>3) Contenuti</h3>
+                <p>Divieto assoluto di materiale NSFW o illegale.</p>
             </div>
-            <div class="rule-card">
-                <h3>4) Informazioni personali</h3>
-                <p>È vietato diffondere dati personali (Doxing) senza consenso. Punizioni severe per i trasgressori.</p>
+
+            <div class="rule-card" onclick="openRuleModal('Privacy', 'Vietato diffondere dati personali senza consenso.', 'Il Doxing (diffusione di nomi reali, indirizzi, foto o numeri di telefono altrui) comporta l\'allontanamento immediato dal server. Proteggi la tua privacy e quella degli altri.')">
+                <h3>4) Privacy</h3>
+                <p>Vietato diffondere dati personali senza consenso.</p>
             </div>
-            <div class="rule-card">
+
+            <div class="rule-card" onclick="openRuleModal('Spam', 'Vietato lo spam di link esterni o altri server.', 'Non è permesso pubblicizzare altri server Discord o siti esterni non autorizzati. I Content Creator possono postare i loro link solo negli appositi canali dedicati.')">
                 <h3>5) Spam</h3>
-                <p>Consentito solo ai Content Creator nei canali dedicati. Vietato lo spam di link esterni o altri server.</p>
+                <p>Vietato lo spam di link esterni o altri server.</p>
             </div>
-            <div class="rule-card">
-                <h3>6) Contenuti illegali</h3>
-                <p>Vietato inviare software piratato, hacking o guide a contenuti illegali.</p>
+
+            <div class="rule-card" onclick="openRuleModal('Legalità', 'No pirateria, hacking o contenuti illegali.', 'È vietato promuovere software piratato, cheat per giochi o metodi di hacking. Ogni attività illegale verrà segnalata e punita col ban.')">
+                <h3>6) Legalità</h3>
+                <p>No pirateria, hacking o contenuti illegali.</p>
             </div>
         </div>
     </section>
@@ -140,78 +184,63 @@
     <section id="staff" class="page-section">
         <div class="card">
             <div onclick="showPage('home')" style="cursor:pointer; color:var(--primary); margin-bottom:20px; font-weight:800;">← TORNA ALLA HOME</div>
-            <h1 style="font-family:'Luckiest Guy'; text-align:center;">🛡️ Lo Staff</h1>
+            <h1 style="font-family:'Luckiest Guy'; text-align:center;">🛡️ STAFF</h1>
             
-            <h2 style="text-align:center; color:gold; margin-top:20px;">👑 Founder</h2>
+            <h2 style="text-align:center; color:gold;">👑 FOUNDER</h2>
             <div class="staff-grid">
-                <div class="staff-card" onclick="openStaffModal('Ked', 'Founder & Dev', 'founder1.png', 'Creatore del sito e sviluppatore principale.')">
-                    <img src="founder1.png"><h3>Ked</h3>
-                </div>
-                <div class="staff-card" onclick="openStaffModal('Ni89', 'Founder & BotDev', 'founder2.png', 'Creatore dei bot e automazioni.')">
-                    <img src="founder2.png"><h3>Ni89</h3>
-                </div>
-                <div class="staff-card" onclick="openStaffModal('Nexy', 'Founder & Manager', 'founder3.png', 'Responsabile gestione ordine server.')">
-                    <img src="founder3.png"><h3>Nexy</h3>
-                </div>
+                <div class="staff-card" onclick="openStaffModal('Ked', 'Founder', 'founder1.png', 'Developer principale e ideatore dell\'Hub.')"><img src="founder1.png"><h3>Ked</h3></div>
+                <div class="staff-card" onclick="openStaffModal('Ni89', 'Founder', 'founder2.png', 'Creatore e gestore dei bot di sistema.')"><img src="founder2.png"><h3>Ni89</h3></div>
+                <div class="staff-card" onclick="openStaffModal('Nexy', 'Founder', 'founder3.png', 'Manager generale del server Discord.')"><img src="founder3.png"><h3>Nexy</h3></div>
             </div>
 
-            <h2 style="text-align:center; margin-top:40px; color:#ff4b4b;">🛡️ Admin</h2>
+            <h2 style="text-align:center; color:#ff4b4b; margin-top:30px;">🛡️ ADMIN</h2>
             <div class="staff-grid">
-                <div class="staff-card" onclick="openStaffModal('Dragon', 'Admin', 'admin1.png', 'Moderatore esperto della KLIK Community.')">
-                    <img src="admin1.png"><h3>Dragon</h3>
-                </div>
-                <div class="staff-card" onclick="openStaffModal('Amon', 'Admin', 'admin2.png', 'Moderatore esperto della KLIK Community.')">
-                    <img src="admin2.png"><h3>Amon</h3>
-                </div>
-                <div class="staff-card" onclick="openStaffModal('Skibidi count', 'Admin', 'admin3.png', 'Moderatore esperto della KLIK Community.')">
-                    <img src="admin3.png"><h3>Skibidi count</h3>
-                </div>
-                <div class="staff-card" onclick="openStaffModal('Gesusenzaccento', 'Admin', 'admin4.png', 'Moderatore esperto della KLIK Community.')">
-                    <img src="admin4.png"><h3>Gesusenzaccento</h3>
-                </div>
-                <div class="staff-card" onclick="openStaffModal('Villaos', 'Admin', 'admin5.png', 'Moderatore esperto della KLIK Community.')">
-                    <img src="admin5.png"><h3>Villaos</h3>
-                </div>
+                <div class="staff-card" onclick="openStaffModal('Dragon', 'Admin', 'admin1.png', 'Responsabile moderazione.')"><img src="admin1.png"><h3>Dragon</h3></div>
+                <div class="staff-card" onclick="openStaffModal('Amon', 'Admin', 'admin2.png', 'Gestione supporto e ticket.')"><img src="admin2.png"><h3>Amon</h3></div>
+                <div class="staff-card" onclick="openStaffModal('Skibidi count', 'Admin', 'admin3.png', 'Controllo canali e ruoli.')"><img src="admin3.png"><h3>Skibidi</h3></div>
+                <div class="staff-card" onclick="openStaffModal('Gesusenzaccento', 'Admin', 'admin4.png', 'Moderatore attivo.')"><img src="admin4.png"><h3>Gesu</h3></div>
+                <div class="staff-card" onclick="openStaffModal('Villaos', 'Admin', 'admin5.png', 'Assistenza community.')"><img src="admin5.png"><h3>Villaos</h3></div>
             </div>
         </div>
     </section>
 
     <section id="forum" class="page-section">
         <div class="card">
-            <div onclick="showPage('home')" style="cursor:pointer; color:var(--primary); margin-bottom:20px; font-weight:800;">← TORNA ALLA HOME</div>
+            <div onclick="showPage('home')" style="cursor:pointer; color:var(--primary); margin-bottom:20px; font-weight:800;">← TORNA INDIETRO</div>
             <div style="display:flex; justify-content:center; gap:10px; margin-bottom:20px;">
                 <button class="btn-nav" onclick="switchForum('sug')">💡 Suggerimenti</button>
                 <button class="btn-nav" onclick="switchForum('feed')">📝 Feedback</button>
             </div>
-            <iframe id="forumIframe" src="https://forms.cloud.microsoft/r/9fyaP3KVHa" style="width:100%; height:600px; border-radius:20px; background:white;"></iframe>
+            <iframe id="forumIframe" src="https://forms.cloud.microsoft/r/9fyaP3KVHa" style="width:100%; height:550px; border-radius:20px; background:white; border:none;"></iframe>
         </div>
     </section>
 
     <section id="candidature" class="page-section">
-        <div class="card" style="text-align:center;">
-            <div onclick="showPage('home')" style="cursor:pointer; color:var(--primary); margin-bottom:20px; font-weight:800; text-align:left;">← TORNA ALLA HOME</div>
-            <h1 style="font-family:'Luckiest Guy';">📝 Candidature</h1>
-            <iframe src="https://forms.gle/zcUjxDvXhrkdHw7q9" style="width:100%; height:600px; border-radius:20px; background:white;"></iframe>
+        <div class="card">
+            <div onclick="showPage('home')" style="cursor:pointer; color:var(--primary); margin-bottom:20px; font-weight:800;">← TORNA INDIETRO</div>
+            <h1 style="font-family:'Luckiest Guy'; text-align:center;">📝 CANDIDATURE</h1>
+            <iframe src="https://forms.gle/zcUjxDvXhrkdHw7q9" style="width:100%; height:550px; border-radius:20px; background:white; border:none;"></iframe>
         </div>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>Contatti</h4>
+                <h4>CONTATTI</h4>
                 <a href="mailto:klik-community@outlook.it">Email: klik-community@outlook.it</a>
                 <a href="https://discord.gg/ygxgazMwuf" target="_blank">Discord Ufficiale</a>
             </div>
             <div class="footer-col">
-                <h4>Link Veloci</h4>
+                <h4>LINK VELOCI</h4>
                 <span onclick="openAboutModal()">Chi Siamo</span>
                 <span onclick="showPage('regole')">Regolamento</span>
-                <span onclick="showPage('staff')">Staff</span>
+                <span onclick="showPage('staff')">Lo Staff</span>
                 <span onclick="showPage('candidature')">Candidature</span>
             </div>
             <div class="footer-col" style="text-align:right;">
                 <h4 style="color:white; opacity:0.5;">KLIK HUB</h4>
-                <p style="font-size:12px; opacity:0.6;">Sito creato da Ked <br> Version 3.2</p>
+                <p style="font-size:12px; opacity:0.5;">Created by Ked</p>
+                <span style="font-weight:bold; color:var(--primary);">Version 4.4</span>
             </div>
         </div>
     </footer>
@@ -220,46 +249,43 @@
         function showPage(id) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            window.scrollTo(0,0);
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function openStaffModal(name, role, img, desc) {
-            const modalImg = document.getElementById('modalImg');
-            modalImg.src = img;
-            modalImg.style.display = 'inline-block';
-            document.getElementById('modalName').innerText = name;
-            document.getElementById('modalRole').innerText = role;
-            document.getElementById('modalDesc').innerHTML = `<p>${desc}</p>`;
+        function updateDiscordCount() {
+            fetch(`https://discord.com/api/guilds/1329496584987082814/widget.json`)
+                .then(r => r.json()).then(d => { document.getElementById('discord-count').innerText = d.presence_count || "0"; });
+        }
+
+        function openStaffModal(n, r, i, d) {
+            const mImg = document.getElementById('modalImg');
+            mImg.src = i; mImg.style.display = 'inline-block';
+            document.getElementById('modalName').innerText = n; document.getElementById('modalRole').innerText = r;
+            document.getElementById('modalDesc').innerHTML = `<p>${d}</p>`;
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function openRuleModal(t, s, d) {
+            document.getElementById('modalImg').style.display = 'none';
+            document.getElementById('modalName').innerText = t; 
+            document.getElementById('modalRole').innerText = "Dettaglio Regolamento";
+            document.getElementById('modalDesc').innerHTML = `<p><strong>Sintesi:</strong> ${s}</p><p style="margin-top:10px;">${d}</p>`;
             document.getElementById('infoModal').style.display = 'flex';
         }
 
         function openAboutModal() {
-            const modalImg = document.getElementById('modalImg');
-            modalImg.style.display = 'none';
-            document.getElementById('modalName').innerText = "CHI SIAMO";
-            document.getElementById('modalRole').innerText = "KLIK Community Story";
-            document.getElementById('modalDesc').innerHTML = `
-                <p>KLIK COMMUNITY nasce per creare un server tra amici.</p>
-                <p>Con la crescita dei membri è diventato qualcosa di più grande.</p>
-                <p>Puoi scegliere giochi, sbloccare categorie dedicate e partecipare attivamente.</p>
-                <p>Meme, clip e divertimento ogni giorno.</p>
-                <p style="margin-top:15px; text-align:center;"><strong>Founder:</strong> Ked & Nik.</p>
-            `;
+            document.getElementById('modalImg').style.display = 'none';
+            document.getElementById('modalName').innerText = "CHI SIAMO"; 
+            document.getElementById('modalRole').innerText = "Storia del Server";
+            document.getElementById('modalDesc').innerHTML = "<p>KLIK COMMUNITY nasce con l'obiettivo di creare un punto di ritrovo sereno e divertente per i videogiocatori di ogni genere.</p>";
             document.getElementById('infoModal').style.display = 'flex';
         }
 
-        function closeModal() {
-            document.getElementById('infoModal').style.display = 'none';
-        }
+        function closeModal() { document.getElementById('infoModal').style.display = 'none'; }
+        window.onclick = function(e) { if (e.target.className === 'modal') closeModal(); }
+        function switchForum(t) { document.getElementById('forumIframe').src = (t === 'sug') ? "https://forms.cloud.microsoft/r/9fyaP3KVHa" : "https://forms.cloud.microsoft/r/9PpU4m1s9A"; }
 
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('infoModal')) closeModal();
-        }
-
-        function switchForum(type) {
-            let ifr = document.getElementById('forumIframe');
-            ifr.src = (type === 'sug') ? "https://forms.cloud.microsoft/r/9fyaP3KVHa" : "https://forms.cloud.microsoft/r/9PpU4m1s9A";
-        }
+        updateDiscordCount(); setInterval(updateDiscordCount, 30000);
     </script>
 </body>
 </html>
