@@ -1,252 +1,119 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>KLIK COMMUNITY – Candidature Staff</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>KLIK COMMUNITY | Candidature</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #a855f7;
+            --accent: #d946ef;
+            --bg: #05000a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.12);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="logo.png">
+        * { 
+            box-sizing: border-box; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;transition:.25s}
+        body {
+            margin: 0; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg); 
+            color: white; 
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
 
-body{
-    background:linear-gradient(135deg,#5a00c8,#a144ff);
-    color:#fff;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
+        /* SFONDO ANIMATO ORIGINALE */
+        body::before {
+            content: ""; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(217, 70, 239, 0.12) 0%, transparent 40%);
+            z-index: -1; 
+            animation: bgMove 8s infinite alternate;
+        }
+        @keyframes bgMove { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-/* NAVBAR */
-.navbar{
-    width:100%;
-    position:fixed;
-    top:0;
-    padding:15px 40px;
-    display:flex;
-    align-items:center;
-    background:rgba(0,0,0,.35);
-    backdrop-filter:blur(8px);
-    z-index:9999;
-}
+        /* SUTTURA SCHEDA */
+        .container { 
+            width: 100%; 
+            max-width: 1100px; 
+            animation: slideUp 0.5s ease forwards; 
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.nav-logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    cursor:pointer;
-}
+        .card { 
+            background: var(--glass); 
+            border: 1px solid var(--glass-border); 
+            border-radius: 30px; 
+            padding: 40px; 
+            backdrop-filter: blur(20px); 
+        }
 
-.nav-logo img{height:55px;border-radius:8px}
+        /* PULSANTE TORNA INDIETRO */
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--primary); 
+            margin-bottom: 20px; 
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .back-link:hover {
+            color: white;
+            transform: translateX(-5px);
+        }
 
-.nav-title{
-    font-family:'Luckiest Guy',cursive;
-    font-size:26px;
-}
+        .title {
+            font-family: 'Luckiest Guy', cursive; 
+            text-align: center;
+            font-size: 40px; 
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
 
-.nav-links{
-    margin-left:auto;
-    display:flex;
-    gap:30px;
-}
+        iframe {
+            width: 100%; 
+            height: 600px; 
+            border-radius: 20px; 
+            background: white; 
+            border: none;
+        }
 
-.nav-links a{
-    color:#fff;
-    text-decoration:none;
-    font-weight:600;
-    padding:8px 14px;
-    border-radius:10px;
-}
-
-.nav-links a:hover{background:rgba(255,255,255,.2)}
-
-.hamburger{
-    display:none;
-    margin-left:auto;
-    font-size:28px;
-    cursor:pointer;
-}
-
-/* MOBILE MENU */
-.mobile-menu{
-    display:none;
-    flex-direction:column;
-    position:fixed;
-    top:90px;
-    right:20px;
-    background:rgba(0,0,0,.95);
-    padding:16px 22px;
-    border-radius:16px;
-    z-index:99999;
-}
-
-.mobile-menu a{
-    color:#fff;
-    text-decoration:none;
-    font-weight:600;
-    padding:10px 0;
-}
-
-/* MOBILE TITLE */
-.page-title{
-    display:none;
-    font-family:'Luckiest Guy',cursive;
-    font-size:42px;
-    margin:150px 0 30px;
-    text-align:center;
-}
-
-/* CONTENT */
-.page-wrapper{
-    padding:200px 20px 80px;
-    width:100%;
-    display:flex;
-    justify-content:center;
-}
-
-.community-section{
-    width:100%;
-    max-width:850px;
-    background:rgba(255,255,255,.16);
-    border-radius:24px;
-    padding:45px 35px;
-    text-align:center;
-}
-
-.community-section h2{
-    font-family:'Luckiest Guy',cursive;
-    font-size:42px;
-    margin-bottom:25px;
-}
-
-.community-section p{
-    font-size:17px;
-    margin-bottom:18px;
-    line-height:1.6;
-}
-
-.staff-btn{
-    display:inline-block;
-    margin-top:35px;
-    padding:15px 30px;
-    background:#fff;
-    color:#5a00c8;
-    font-weight:700;
-    border-radius:14px;
-    text-decoration:none;
-}
-
-.staff-btn:hover{
-    transform:scale(1.05);
-}
-
-.footer{
-    margin:40px 0 20px;
-    opacity:.6;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .nav-links{display:none}
-    .hamburger{display:block}
-    .nav-title{display:none}
-    .page-title{display:block}
-    .page-wrapper{padding-top:60px}
-}
-</style>
+        @media (max-width: 600px) {
+            .card { padding: 20px; }
+            .title { font-size: 30px; }
+            iframe { height: 500px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="navbar">
-    <div class="nav-logo" onclick="location.href='index.html'">
-        <img src="logo.png">
-        <div class="nav-title">CANDIDATURE</div>
+    <div class="container">
+        <div class="card">
+            <a href="index.html" class="back-link">← TORNA ALLA HOME</a>
+            
+            <h1 class="title">📝 CANDIDATURE</h1>
+            
+            <iframe src="https://forms.gle/zcUjxDvXhrkdHw7q9" title="Modulo Candidature"></iframe>
+        </div>
     </div>
-
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="regole.html">Regole</a>
-        <a href="chi-siamo.html">Chi siamo</a>
-        <a href="staff.html">Staff</a>
-        <a href="candidature.html">Candidature staff</a>
-        <a href="forum.html">Forum</a>
-    </div>
-
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-</div>
-
-<div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="regole.html">Regole</a>
-    <a href="chi-siamo.html">Chi siamo</a>
-    <a href="staff.html">Staff</a>
-    <a href="candidature.html">Candidature staff</a>
-    <a href="forum.html">Forum</a>
-</div>
-
-<h1 class="page-title">Candidature Staff</h1>
-
-<div class="page-wrapper">
-    <div class="community-section">
-        <h2>Entra nello Staff</h2>
-
-        <p>Vuoi entrare a far parte dello staff di KLIK COMMUNITY?</p>
-        <p>Siamo sempre alla ricerca di persone serie, attive e con voglia di contribuire.</p>
-        <p>Potrai aiutare nella moderazione, eventi e gestione della community.</p>
-        <p>Le candidature vengono valutate direttamente su Discord.</p>
-
-        <a class="staff-btn" href="https://forms.gle/zcUjxDvXhrkdHw7q9" target="_blank">
-            Invia la candidatura
-        </a>
-    </div>
-</div>
-
-<div class="footer">v2.0 by Ked</div>
-
-<script>
-function toggleMenu(){
-    const m=document.getElementById("mobileMenu");
-    m.style.display=m.style.display==="flex"?"none":"flex";
-}
-</script>
-<!-- FOOTER -->
-<footer style="width:100%; background:#111; color:white; padding:25px 20px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:15px; box-shadow: 0 -3px 10px rgba(0,0,0,0.5);">
-  
-  <!-- Contatti -->
-  <div style="flex:1; min-width:200px;">
-    <h3 style="margin:0 0 10px 0; font-size:18px;">Contatti</h3>
-    <p style="margin:3px 0;">Email: <a href="mailto:klik-community@outlook.it" style="color:#a855f7; text-decoration:none;">klik-community@outlook.it</a></p>
-    <p style="margin:3px 0;">Discord: <a href="https://discord.gg/ygxgazMwuf" target="_blank" style="color:#a855f7; text-decoration:none;">Unisciti al server</a></p>
-  </div>
-
-  <!-- Link utili -->
-  <div style="flex:1; min-width:200px;">
-    <h3 style="margin:0 0 10px 0; font-size:18px;">Link utili</h3>
-    <p style="margin:3px 0;"><a href="index.html" style="color:#a855f7; text-decoration:none;">Home</a></p>
-    <p style="margin:3px 0;"><a href="regole.html" style="color:#a855f7; text-decoration:none;">Regole</a></p>
-    <p style="margin:3px 0;"><a href="chi-siamo.html" style="color:#a855f7; text-decoration:none;">Chi siamo</a></p>
-    <p style="margin:3px 0;"><a href="staff.html" style="color:#a855f7; text-decoration:none;">Staff</a></p>
-    <p style="margin:3px 0;"><a href="candidature.html" style="color:#a855f7; text-decoration:none;">Candidature</a></p>
-    <p style="margin:3px 0;"><a href="forum.html" style="color:#a855f7; text-decoration:none;">Forum</a></p>
-  </div>
-
-  <!-- Credits -->
-  <div style="flex:1; min-width:200px; text-align:right;">
-    <p style="margin:0; font-size:14px;">2026 KLIK COMMUNITY</p>
-  </div>
-
-</footer>
-
-<!-- FOOTER RESPONSIVE -->
-<style>
-@media(max-width:900px) {
-  footer { flex-direction:column; text-align:center; align-items:center; }
-  footer div { text-align:center; }
-}
-</style>
 
 </body>
 </html>
